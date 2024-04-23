@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class Player_Controller : MonoBehaviour
+public class PlayerData : MonoBehaviour
 {
     public EntityData entityData;
     public LayerMask EncounterLayer;
