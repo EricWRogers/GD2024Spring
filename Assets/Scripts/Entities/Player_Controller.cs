@@ -5,6 +5,7 @@ using System;
 
 public class Player_Controller : MonoBehaviour
 {
+    public EntityData entityData;
     public LayerMask EncounterLayer;
     const float baseThreshold = 1;
     public float currentThreshold = baseThreshold;
