@@ -27,10 +27,17 @@ public class EntityData
     public float speed;
     public float curSpeed;
 
-    public PlayerState playerState;
+    public EntityState entityState;
+    public EntityGroup entityGroup;
+}
 
+public enum EntityGroup
+{
+    Friendly,
+    Enemy
+}
 
-public enum PlayerState
+public enum EntityState
 {
     Loading,
     Idle,
@@ -39,5 +46,3 @@ public enum PlayerState
     Attacking
 }
 
-
-}
