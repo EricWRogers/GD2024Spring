@@ -5,7 +5,14 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
 
-    public float playerHealth = 2f;
+    public float health = 2f;
 
+    private void Update()
+    {
+        if (health <= 0)
+        {
+            Destroy(this);
+        }
+    }
 
 }
