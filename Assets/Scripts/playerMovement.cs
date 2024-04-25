@@ -16,7 +16,7 @@ public class playerMovement : MonoBehaviour
         movement.y = Input.GetAxisRaw("Vertical");
     }
 
-    void FixedUpadate()
+    void FixedUpdate()
     {
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
     }
