@@ -5,12 +5,11 @@ using UnityEngine;
 public class DealDmg : MonoBehaviour
 {
     public int damage;
-    public LayerMask targetMask;
     GameObject player;
     // Start is called before the first frame update
     void Start()
     {
-        
+        player = GameObject.FindWithTag("Player");
     }
 
     // Update is called once per frame
@@ -18,11 +17,13 @@ public class DealDmg : MonoBehaviour
     {
         
     }
-    void OnTriggerEnter(Collider other)
+    void OnTriggerEnter2D (Collider2D other)
     {
-        if (other.gameObject.layer == targetMask)
+        Debug.Log("Hit");
+        if (other.gameObject.tag == "Player")
         {
-            //player.health -= damage;
+            Debug.Log("Hit" + other.gameObject);
+            player.GetComponent<Health>().playerHealth -= damage;
         }
             
     }
