@@ -5,13 +5,22 @@ using UnityEngine;
 public class Player_Movement : MonoBehaviour
 {
     public float moveSpeed;
+    float SprintWhyNot = 1f;
+    public float collisionRadius;
 
     bool isMoving;
     Vector2 input;
 
-    // Update is called once per frame
+    public LayerMask SolidObjectsLayer1;
+    public LayerMask SolidObjectsLayer2;
+
+
+
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.LeftShift)) { SprintWhyNot = 2; }
+        if (Input.GetKeyUp(KeyCode.LeftShift)) { SprintWhyNot = 1; }
+
         if (!isMoving)
         {
             input.x = Input.GetAxisRaw("Horizontal");
@@ -24,8 +33,12 @@ public class Player_Movement : MonoBehaviour
                 var targetpos = transform.position;
                 targetpos.x += input.x;
                 targetpos.y += input.y;
-
-                StartCoroutine(Move(targetpos));
+                
+                if (!IsAWall(targetpos))
+                {
+                    StartCoroutine(Move(targetpos));
+                }
+                
             }
             
         }
@@ -33,14 +46,20 @@ public class Player_Movement : MonoBehaviour
         {
             isMoving = true;
             while ((targetpos - transform.position).sqrMagnitude > Mathf.Epsilon)
-            {
-                transform.position = Vector3.MoveTowards(transform.position, targetpos, moveSpeed * Time.deltaTime);
+            {       
+                transform.position = Vector3.MoveTowards(transform.position, targetpos, moveSpeed * SprintWhyNot * Time.deltaTime);
                 yield return null;
             }
             transform.position = targetpos;
             isMoving = false;
         }
-        
-            
+        bool IsAWall(Vector2 targetpos)
+        {
+            if (Physics2D.OverlapCircle(targetpos, collisionRadius, SolidObjectsLayer1) != null | Physics2D.OverlapCircle(targetpos, collisionRadius, SolidObjectsLayer2) != null) 
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }
