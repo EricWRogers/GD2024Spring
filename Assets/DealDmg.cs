@@ -23,7 +23,7 @@ public class DealDmg : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             Debug.Log("Hit" + other.gameObject);
-            player.GetComponent<Health>().playerHealth -= damage;
+            player.GetComponent<Health>().health -= damage;
         }
             
     }
