@@ -9,23 +9,15 @@ public class EntityController : MonoBehaviour
 
     private void Start()
     {
+        playerData.Init();
+        enemyData.Init();
         playerData._target = enemyData;
+
+        StartCoroutine(playerData.EntityLoop());
     }
 
     private void Update()
     {
-
-
-        //Let's increase the player speed
-
-        if (playerData.curSpeed >= playerData.speedLimit)
-        {
-            playerData.curSpeed = playerData.speedLimit;
-        }
-        else
-        {
-            playerData.curSpeed += Time.deltaTime;
-        }
 
         if (playerData.ActionReady)
         {
@@ -33,16 +25,9 @@ public class EntityController : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 Debug.Log("Player did an action");
-                playerData.curSpeed = 0;
+                playerData.Attack();
             }
         }
-    }
-
-    IEnumerator EntityBehavior()
-    {
-        // Character Target
-
-        yield return null;
     }
 
 }
