@@ -20,7 +20,7 @@ public class PlayerData : MonoBehaviour
 
     public void RollEncounter()
     {
-        if (Physics2D.OverlapCircle(transform.position, 0.2f, EncounterLayer)!= null || Input.GetKeyDown(KeyCode.LeftShift))
+        if (Physics2D.OverlapCircle(transform.position, 0.2f, EncounterLayer)!= null || Input.GetKeyDown(KeyCode.B))
         {
             int chance = UnityEngine.Random.Range(1, 101);
             if (chance < currentThreshold)
@@ -34,5 +34,4 @@ public class PlayerData : MonoBehaviour
             }
         }
     }
-
 }

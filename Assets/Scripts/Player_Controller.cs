@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player_Movement : MonoBehaviour
+public class Player_Controller : MonoBehaviour
 {
     public float moveSpeed;
     float SprintWhyNot = 1f;
@@ -61,5 +61,7 @@ public class Player_Movement : MonoBehaviour
             }
             return false;
         }
+        
+
     }
 }
