@@ -2,17 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class UIManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public static UIManager Instance;
+
+    public Transform rowHolder;
+    public Transform nameHolder;
+
+    [Header("UI Prefabs")]
+    public GameObject rowPrefab;
+    public GameObject namePrefab;
+
+    private void Awake()
     {
-        
+        Instance = this;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SpawnRow()
     {
-        
+        //instantiate the row
+        GameObject tmpRow = Instantiate(rowPrefab);
+        tmpRow.transform.SetParent(rowHolder, false);
+
+        //instantiate name
+        GameObject tmpName = Instantiate(namePrefab);
+        tmpName.transform.SetParent(nameHolder, false);
     }
 }

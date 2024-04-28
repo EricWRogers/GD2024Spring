@@ -152,6 +152,7 @@ public class UIData
     public DefUI physicUI;
     public void Init(int maxHealth, int curHealth, int maxEnergy, int curEnergy, string charName)
     {
+        UIManager.Instance.SpawnRow();
         //Health Slider Setup
         physicUI.healthSlider.maxValue = maxHealth;
         physicUI.healthSlider.value = curHealth;
