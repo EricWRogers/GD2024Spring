@@ -27,7 +27,7 @@ public class EntityData
     [Space(10)]
 
     public float maxOC = 100;
-    public float curtOC = 100;
+    public float curOC = 100;
 
     [Space(10)]
 
@@ -78,6 +78,13 @@ public class EntityData
         {
             curHealth = 0;
             entityState = EntityState.Died;
+        }
+        //OVERCHARGEEEEE
+        if (entityGroup == EntityGroup.Friendly)
+        {
+            curOC += 5;
+
+            entityUI.UpdateOCBar(curOC);
         }
 
 
@@ -138,6 +145,7 @@ public class EntityData
                 //increase currentspeed
                 curSpeed += Time.deltaTime;
                 entityState = EntityState.Idle;
+                entityUI.UpdateTimeBar(curSpeed);
             }
             
             yield return null;
@@ -153,7 +161,7 @@ public class UIData
     public int placeInUi = 1;
 
     
-    public void Init(int maxHealth, int curHealth, int maxEnergy, int curEnergy, string charName, float speedLimit, float OCMax)
+    public void Init(int maxHealth, int curHealth, int maxEnergy, int curEnergy, string charName, float speedLimit, float ocMax)
     {
         placeInUi = UIManager.currentUICount;;
         if (placeInUi == 1)
@@ -182,8 +190,8 @@ public class UIData
         physicUI.entityUI.text = charName;
 
         //Limit/Timebar
-        physicUI.OCSlider.maxValue = OCMax;
-        physicUI.OCSlider.value = 0;
+        physicUI.ocSlider.maxValue = ocMax;
+        physicUI.ocSlider.value = 0;
 
         physicUI.timeSlider.maxValue = speedLimit;
         physicUI.timeSlider.value = 0;
