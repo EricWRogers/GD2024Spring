@@ -11,13 +11,18 @@ public class EntityData
     public string characterName = "CharacterName";
     [Space(10)]
 
+    
+    public UIData entityUI;
+
+    [Space(10)]
+
     public int maxHealth = 100;
     public int curHealth = 100;
 
     [Space(10)]
 
     public int maxEnergy = 100;
-    public int energyCurr = 100;
+    public int curEnergy = 100;
 
     [Space(10)]
 
@@ -47,6 +52,12 @@ public class EntityData
 
     public void Init()
     {
+        if (entityGroup == EntityGroup.Friendly)
+        {
+           entityUI.Init(maxHealth, curHealth, maxEnergy, curEnergy, characterName); 
+        }
+        
+
         OnAttack.AddListener(EntityAttackDefault);
         onWasAttacked.AddListener(EntityAttackedDefault);
 
@@ -135,9 +146,36 @@ public class EntityData
 
 }
 
+[System.Serializable]
 public class UIData
 {
     public Slider healthSlider;
+    public TMP_Text healthUI;
+    
+    public Slider energySlider;
+    public TMP_Text energyUI;
+
+    public Slider overSlider;
+    public Slider timeSlider;
+
+    public TMP_Text entityUI;
+
+    public void Init(int maxHealth, int curHealth, int maxEnergy, int curEnergy, string charName)
+    {
+        //Health Slider Setup
+        healthSlider.maxValue = maxHealth;
+        healthSlider.value = curHealth;
+        healthUI.text = curHealth.ToString() + "/" + maxHealth.ToString();
+
+        //energy slider setup
+        energySlider.maxValue = maxEnergy;
+        energySlider.value = curEnergy;
+        energyUI.text = curEnergy.ToString();
+
+        //Entity Info Setup
+        entityUI.text = charName;
+
+    }
 }
 
 public enum EntityGroup
