@@ -12,7 +12,7 @@ public class RowUI : MonoBehaviour
     public Slider energySlider;
     public TMP_Text energyUI;
 
-    public Slider overSlider;
+    public Slider OCSlider;
     public Slider timeSlider;
 
     public TMP_Text entityUI;

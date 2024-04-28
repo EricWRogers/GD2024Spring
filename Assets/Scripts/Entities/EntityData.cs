@@ -83,6 +83,7 @@ public class EntityData
         if (entityGroup == EntityGroup.Friendly)
         {
             curOC += 5;
+            curOC = Mathf.Clamp(curOC, 0, maxOC);
 
             entityUI.UpdateOCBar(curOC);
         }
@@ -161,7 +162,7 @@ public class UIData
     public int placeInUi = 1;
 
     
-    public void Init(int maxHealth, int curHealth, int maxEnergy, int curEnergy, string charName, float speedLimit, float ocMax)
+    public void Init(int maxHealth, int curHealth, int maxEnergy, int curEnergy, string charName, float speedLimit, float OCmax)
     {
         placeInUi = UIManager.currentUICount;;
         if (placeInUi == 1)
@@ -190,8 +191,8 @@ public class UIData
         physicUI.entityUI.text = charName;
 
         //Limit/Timebar
-        physicUI.ocSlider.maxValue = ocMax;
-        physicUI.ocSlider.value = 0;
+        physicUI.OCSlider.maxValue = OCmax;
+        physicUI.OCSlider.value = 0;
 
         physicUI.timeSlider.maxValue = speedLimit;
         physicUI.timeSlider.value = 0;
@@ -202,7 +203,7 @@ public class UIData
 
     public void UpdateTimeBar(float currentProg)
     {
-        physicUI.timeSlider = currentProg;
+        physicUI.timeSlider.value = currentProg;
     }
 
     public void UpdateOCBar(float currentProg)
