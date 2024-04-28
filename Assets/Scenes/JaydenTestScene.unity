@@ -177,10 +177,10 @@ MonoBehaviour:
     curHealth: 100
     maxEnergy: 100
     curEnergy: 100
-    maxOCPoints: 100
-    currentOCPoints: 100
+    maxOC: 100
+    curOC: 0
     speedLimit: 10
-    curSpeed: 10
+    curSpeed: 0
     entityState: 0
     entityGroup: 0
     OnAttack:
@@ -1096,7 +1096,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entityData:
-    characterName: R_01
+    characterName: John
     entityUI:
       physicUI: {fileID: 0}
       placeInUi: 1
@@ -1104,10 +1104,10 @@ MonoBehaviour:
     curHealth: 100
     maxEnergy: 100
     curEnergy: 100
-    maxOCPoints: 100
-    currentOCPoints: 100
+    maxOC: 100
+    curOC: 0
     speedLimit: 10
-    curSpeed: 10
+    curSpeed: 0
     entityState: 0
     entityGroup: 0
     OnAttack:
@@ -1408,10 +1408,10 @@ MonoBehaviour:
     curHealth: 100
     maxEnergy: 100
     curEnergy: 100
-    maxOCPoints: 100
-    currentOCPoints: 100
+    maxOC: 100
+    curOC: 100
     speedLimit: 10
-    curSpeed: 10
+    curSpeed: 0
     entityState: 0
     entityGroup: 1
     OnAttack:
@@ -2103,6 +2103,18 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2300338556521803292, guid: 05913eb8116bd4d45923357771442708, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300338556521803292, guid: 05913eb8116bd4d45923357771442708, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300338556521803292, guid: 05913eb8116bd4d45923357771442708, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2969378144580185312, guid: 05913eb8116bd4d45923357771442708, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -2115,10 +2127,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Data
       objectReference: {fileID: 0}
-    - target: {fileID: 3520251161290663445, guid: 05913eb8116bd4d45923357771442708, type: 3}
-      propertyPath: m_Name
-      value: OCBar
-      objectReference: {fileID: 0}
     - target: {fileID: 3616843665571182326, guid: 05913eb8116bd4d45923357771442708, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -2127,6 +2135,18 @@ PrefabInstance:
       propertyPath: entityUI
       value: 
       objectReference: {fileID: 1952502202}
+    - target: {fileID: 5587380611465258821, guid: 05913eb8116bd4d45923357771442708, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5587380611465258821, guid: 05913eb8116bd4d45923357771442708, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5587380611465258821, guid: 05913eb8116bd4d45923357771442708, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7204885495558162819, guid: 05913eb8116bd4d45923357771442708, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

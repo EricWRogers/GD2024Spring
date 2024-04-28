@@ -70,6 +70,11 @@ public class EntityData
 
         //TEMP ATTACK
         _target.Damage(10);
+
+        if(entityGroup == EntityGroup.Friendly)
+        {
+            IncreaseOC(5);
+        }
     }
 
     public void Damage(int damageAmount)
@@ -82,10 +87,7 @@ public class EntityData
         //OVERCHARGEEEEE
         if (entityGroup == EntityGroup.Friendly)
         {
-            curOC += 5;
-            curOC = Mathf.Clamp(curOC, 0, maxOC);
-
-            entityUI.UpdateOCBar(curOC);
+            IncreaseOC(5);
         }
 
 
@@ -120,6 +122,13 @@ public class EntityData
         
     }
 
+    void IncreaseOC(int amount)
+    {
+        curOC += amount;
+        curOC = Mathf.Clamp(curOC, 0, maxOC);
+
+        entityUI.UpdateOCBar(curOC);
+    }
     void  EntityAttackDefault()
     {
         playerJustAttacked = false;
@@ -145,8 +154,13 @@ public class EntityData
             {
                 //increase currentspeed
                 curSpeed += Time.deltaTime;
+
+                if(entityGroup == EntityGroup.Friendly)
+                {
+                    entityUI.UpdateTimeBar(curSpeed);
+                }
+                
                 entityState = EntityState.Idle;
-                entityUI.UpdateTimeBar(curSpeed);
             }
             
             yield return null;
@@ -204,6 +218,7 @@ public class UIData
     public void UpdateTimeBar(float currentProg)
     {
         physicUI.timeSlider.value = currentProg;
+
     }
 
     public void UpdateOCBar(float currentProg)

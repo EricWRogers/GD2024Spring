@@ -36,6 +36,8 @@ public class UIManager : MonoBehaviour
         GameObject tmpName = Instantiate(namePrefab);
         tmpName.transform.SetParent(nameHolder, false);
         TMPro.TMP_Text txtName = tmpName.GetComponent<TMPro.TMP_Text>();
+
+        tmpRow.name = "Character" + tmpRow.transform.childCount;
         
         rowTmpInfo.entityUI = txtName;
 
