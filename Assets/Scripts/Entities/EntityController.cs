@@ -1,31 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class EntityController : MonoBehaviour
 {
-    public EntityData playerData;
-    public EntityData enemyData;
+    public EntityData entityData;
+    public EntityController targetData;
 
     private void Start()
     {
-        playerData.Init();
-        enemyData.Init();
-        playerData._target = enemyData;
+        entityData.Init();
+        entityData._target = targetData.entityData;
 
-        StartCoroutine(playerData.EntityLoop());
+        StartCoroutine(entityData.EntityLoop());
     }
 
     private void Update()
     {
 
-        if (playerData.ActionReady)
+        if (entityData.ActionReady)
         {
             Debug.Log("Ready to attack");
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (entityData.entityGroup == EntityGroup.Friendly && Input.GetKeyDown(KeyCode.Space))
             {
                 Debug.Log("Player did an action");
-                playerData.Attack();
+                if (entityData._target.CanBeAttacked)
+                {
+                    entityData.Attack();
+                }
+
             }
         }
     }

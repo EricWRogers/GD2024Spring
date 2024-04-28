@@ -375,6 +375,70 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 88647773}
   m_CullTransparentMesh: 1
+--- !u!1 &138344238
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 138344240}
+  - component: {fileID: 138344239}
+  m_Layer: 0
+  m_Name: Friendly
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &138344239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 138344238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bef2d96a638312428f9c5024254224b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entityData:
+    characterName: R_01
+    maxHealth: 100
+    curHealth: 100
+    maxEnergy: 100
+    energyCurr: 100
+    maxOCPoints: 100
+    currentOCPoints: 100
+    speedLimit: 10
+    curSpeed: 10
+    entityState: 0
+    entityGroup: 0
+    OnAttack:
+      m_PersistentCalls:
+        m_Calls: []
+    onWasAttacked:
+      m_PersistentCalls:
+        m_Calls: []
+    playerJustAttacked: 0
+  targetData: {fileID: 469582527}
+--- !u!4 &138344240
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 138344238}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 674.0947, y: 79.26612, z: -8.962938}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &178781301
 GameObject:
   m_ObjectHideFlags: 0
@@ -1044,6 +1108,70 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 308610795}
   m_CullTransparentMesh: 1
+--- !u!1 &469582526
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 469582528}
+  - component: {fileID: 469582527}
+  m_Layer: 0
+  m_Name: Enemy
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &469582527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 469582526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bef2d96a638312428f9c5024254224b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entityData:
+    characterName: Enemytext
+    maxHealth: 100
+    curHealth: 100
+    maxEnergy: 100
+    energyCurr: 100
+    maxOCPoints: 100
+    currentOCPoints: 100
+    speedLimit: 10
+    curSpeed: 10
+    entityState: 0
+    entityGroup: 0
+    OnAttack:
+      m_PersistentCalls:
+        m_Calls: []
+    onWasAttacked:
+      m_PersistentCalls:
+        m_Calls: []
+    playerJustAttacked: 0
+  targetData: {fileID: 0}
+--- !u!4 &469582528
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 469582526}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 674.0947, y: 79.26612, z: -8.962938}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &498299534
 GameObject:
   m_ObjectHideFlags: 0
@@ -3782,3 +3910,5 @@ SceneRoots:
   - {fileID: 1564910637}
   - {fileID: 775624413}
   - {fileID: 839004443}
+  - {fileID: 138344240}
+  - {fileID: 469582528}

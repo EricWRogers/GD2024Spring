@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using TMPro;
+using UnityEngine.UI;
 
 [System.Serializable]
 public class EntityData
@@ -10,7 +12,7 @@ public class EntityData
     [Space(10)]
 
     public int maxHealth = 100;
-    public int curHealth = 1000;
+    public int curHealth = 100;
 
     [Space(10)]
 
@@ -45,9 +47,10 @@ public class EntityData
 
     public void Init()
     {
-        OnAttack.AddListener(EntityAttackedDefault);
+        OnAttack.AddListener(EntityAttackDefault);
+        onWasAttacked.AddListener(EntityAttackedDefault);
 
-
+        entityState = EntityState.Idle;
     }
 
     public void Attack()
@@ -56,14 +59,30 @@ public class EntityData
 
         //TEMP ATTACK
         _target.Damage(10);
-        Debug.Log("Target was shot");
     }
 
     public void Damage(int damageAmount)
     {
+        if (curHealth <= 0)
+        {
+            curHealth = 0;
+            entityState = EntityState.Died;
+        }
+
+
+
         curHealth -= damageAmount;
+        onWasAttacked.Invoke();
     }
 
+    public bool CanBeAttacked
+    {
+        get
+        {
+            return entityState == EntityState.Idle || entityState == EntityState.Ready;
+        }
+        
+    }
 
     public bool CanAttackTarget
     {
@@ -91,19 +110,7 @@ public class EntityData
 
     void EntityAttackedDefault()
     {
-        Debug.Log(characterName + "was attacked");
-    }
-    public IEnumerator EntityBehavior()
-    {
-        // Character Target
-
-        yield return new WaitUntil(()=> CanAttackTarget);
-
-        // We need to wait until the character(enemy or player) has done an action
-        yield return new WaitUntil(()=> playerJustAttacked);
-
-        OnAttack.Invoke(); 
-
+        Debug.Log(characterName + " was attacked");
     }
 
     public IEnumerator EntityLoop()
@@ -113,17 +120,24 @@ public class EntityData
             if (curSpeed >= speedLimit)
             {
                 curSpeed = speedLimit;
+                entityState = EntityState.Ready;
             }
             else
             {
                 //increase currentspeed
                 curSpeed += Time.deltaTime;
+                entityState = EntityState.Idle;
             }
             
             yield return null;
         }  
     }
 
+}
+
+public class UIData
+{
+    public Slider healthSlider;
 }
 
 public enum EntityGroup
