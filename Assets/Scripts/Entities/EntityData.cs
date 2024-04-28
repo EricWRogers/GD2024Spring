@@ -149,31 +149,21 @@ public class EntityData
 [System.Serializable]
 public class UIData
 {
-    public Slider healthSlider;
-    public TMP_Text healthUI;
-    
-    public Slider energySlider;
-    public TMP_Text energyUI;
-
-    public Slider overSlider;
-    public Slider timeSlider;
-
-    public TMP_Text entityUI;
-
+    public DefUI physicUI;
     public void Init(int maxHealth, int curHealth, int maxEnergy, int curEnergy, string charName)
     {
         //Health Slider Setup
-        healthSlider.maxValue = maxHealth;
-        healthSlider.value = curHealth;
-        healthUI.text = curHealth.ToString() + "/" + maxHealth.ToString();
+        physicUI.healthSlider.maxValue = maxHealth;
+        physicUI.healthSlider.value = curHealth;
+        physicUI.healthUI.text = curHealth.ToString() + "/" + maxHealth.ToString();
 
         //energy slider setup
-        energySlider.maxValue = maxEnergy;
-        energySlider.value = curEnergy;
-        energyUI.text = curEnergy.ToString();
+        physicUI.energySlider.maxValue = maxEnergy;
+        physicUI.energySlider.value = curEnergy;
+        physicUI.energyUI.text = curEnergy.ToString();
 
         //Entity Info Setup
-        entityUI.text = charName;
+        physicUI.entityUI.text = charName;
 
     }
 }
