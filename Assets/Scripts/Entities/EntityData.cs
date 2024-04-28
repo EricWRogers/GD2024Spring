@@ -79,6 +79,11 @@ public class EntityData
 
     public void Damage(int damageAmount)
     {
+        curHealth -= damageAmount;
+
+        
+
+
         if (curHealth <= 0)
         {
             curHealth = 0;
@@ -88,6 +93,7 @@ public class EntityData
         if (entityGroup == EntityGroup.Friendly)
         {
             IncreaseOC(5);
+            entityUI.UpdateHealthBar(curHealth, maxHealth);
         }
 
 
@@ -193,13 +199,11 @@ public class UIData
         }
         //Health Slider Setup
         physicUI.healthSlider.maxValue = maxHealth;
-        physicUI.healthSlider.value = curHealth;
-        physicUI.healthUI.text = curHealth.ToString() + "/" + maxHealth.ToString();
+        UpdateHealthBar(curHealth, maxHealth);
 
         //energy slider setup
         physicUI.energySlider.maxValue = maxEnergy;
-        physicUI.energySlider.value = curEnergy;
-        physicUI.energyUI.text = curEnergy.ToString();
+        UpdateEnergyBar(curEnergy);
 
         //Entity Info Setup
         physicUI.entityUI.text = charName;
@@ -224,6 +228,18 @@ public class UIData
     public void UpdateOCBar(float currentProg)
     {
         physicUI.OCSlider.value = currentProg;
+    }
+
+    public void UpdateHealthBar(int currentAmount, int maxAmount)
+    {
+        physicUI.healthSlider.value = currentAmount;
+        physicUI.healthUI.text = currentAmount.ToString() + "/" + maxAmount.ToString();
+    }
+
+    public void UpdateEnergyBar(int currentAmount)
+    {
+        physicUI.energySlider.value = currentAmount;
+        physicUI.energyUI.text = currentAmount.ToString();
     }
 }
 
