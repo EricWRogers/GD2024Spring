@@ -9,9 +9,14 @@ using UnityEngine.UI;
 public class EntityData
 {
     public string characterName = "CharacterName";
+    
+
+    [Space(10)]
+    public List <AbilityData> entityAbilities;
+
+
     [Space(10)]
 
-    
     public UIData entityUI;
 
     [Space(10)]
