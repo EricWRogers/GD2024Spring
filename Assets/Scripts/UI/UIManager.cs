@@ -27,5 +27,8 @@ public class UIManager : MonoBehaviour
         //instantiate name
         GameObject tmpName = Instantiate(namePrefab);
         tmpName.transform.SetParent(nameHolder, false);
+
+        RowUI rowTmpInfo = tmpRow.GetComponent<RowUI>();
+        rowTmpInfo.entityUI;
     }
 }
