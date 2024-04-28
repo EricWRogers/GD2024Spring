@@ -26,8 +26,8 @@ public class EntityData
 
     [Space(10)]
 
-    public float maxOCPoints = 100;
-    public float currentOCPoints = 100;
+    public float maxOC = 100;
+    public float curtOC = 100;
 
     [Space(10)]
 
@@ -54,7 +54,7 @@ public class EntityData
     {
         if (entityGroup == EntityGroup.Friendly)
         {
-           entityUI.Init(maxHealth, curHealth, maxEnergy, curEnergy, characterName); 
+           entityUI.Init(maxHealth, curHealth, maxEnergy, curEnergy, characterName, speedLimit, maxOC); 
         }
         
 
@@ -149,10 +149,25 @@ public class EntityData
 [System.Serializable]
 public class UIData
 {
-    public DefUI physicUI;
-    public void Init(int maxHealth, int curHealth, int maxEnergy, int curEnergy, string charName)
+    public RowUI physicUI;
+    public int placeInUi = 1;
+
+    
+    public void Init(int maxHealth, int curHealth, int maxEnergy, int curEnergy, string charName, float speedLimit, float OCMax)
     {
-        UIManager.Instance.SpawnRow();
+        placeInUi = UIManager.currentUICount;;
+        if (placeInUi == 1)
+        {
+            //Do not spawn another row
+            physicUI = UIManager.Instance.defaultRowUI;
+        
+        }
+        else
+        {
+            //row spawning
+            UIManager.Instance.SpawnRow(out physicUI);
+
+        }
         //Health Slider Setup
         physicUI.healthSlider.maxValue = maxHealth;
         physicUI.healthSlider.value = curHealth;
@@ -166,8 +181,29 @@ public class UIData
         //Entity Info Setup
         physicUI.entityUI.text = charName;
 
+        //Limit/Timebar
+        physicUI.OCSlider.maxValue = OCMax;
+        physicUI.OCSlider.value = 0;
+
+        physicUI.timeSlider.maxValue = speedLimit;
+        physicUI.timeSlider.value = 0;
+
+        UIManager.currentUICount++;
+
+    }
+
+    public void UpdateTimeBar(float currentProg)
+    {
+        physicUI.timeSlider = currentProg;
+    }
+
+    public void UpdateOCBar(float currentProg)
+    {
+        physicUI.OCSlider.value = currentProg;
     }
 }
+
+
 
 public enum EntityGroup
 {

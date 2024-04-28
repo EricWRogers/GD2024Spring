@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class UIManager : MonoBehaviour
 {
@@ -13,22 +15,30 @@ public class UIManager : MonoBehaviour
     public GameObject rowPrefab;
     public GameObject namePrefab;
 
+    [Header("First PlayerUI")]
+    public RowUI defaultRowUI;
+
+    public static int currentUICount  = 1;
+
     private void Awake()
     {
         Instance = this;
     }
 
-    public void SpawnRow()
+    public void SpawnRow(out RowUI processedUI)
     {
         //instantiate the row
         GameObject tmpRow = Instantiate(rowPrefab);
         tmpRow.transform.SetParent(rowHolder, false);
+        RowUI rowTmpInfo = tmpRow.GetComponent<RowUI>();
 
         //instantiate name
         GameObject tmpName = Instantiate(namePrefab);
         tmpName.transform.SetParent(nameHolder, false);
+        TMPro.TMP_Text txtName = tmpName.GetComponent<TMPro.TMP_Text>();
+        
+        rowTmpInfo.entityUI = txtName;
 
-        RowUI rowTmpInfo = tmpRow.GetComponent<RowUI>();
-        rowTmpInfo.entityUI;
+        processedUI = rowTmpInfo;
     }
 }

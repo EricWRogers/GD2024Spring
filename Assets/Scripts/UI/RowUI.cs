@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class DefUI : MonoBehaviour
+public class RowUI : MonoBehaviour
 {
     public Slider healthSlider;
     public TMP_Text healthUI;
