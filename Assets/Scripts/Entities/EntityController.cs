@@ -8,6 +8,10 @@ public class EntityController : MonoBehaviour
     public EntityData entityData;
     public EntityController targetData;
 
+    private void Awake()
+    {
+        entityData._charCont = this;
+    }
     private void Start()
     {
         entityData.Init();
@@ -16,22 +20,10 @@ public class EntityController : MonoBehaviour
         StartCoroutine(entityData.EntityLoop());
     }
 
-    private void Update()
+    /*private void Update()
     {
 
-        if (entityData.ActionReady)
-        {
-            Debug.Log("Ready to attack");
-            if (entityData.entityGroup == EntityGroup.Friendly && Input.GetKeyDown(KeyCode.Space))
-            {
-                Debug.Log("Player did an action");
-                if (entityData._target.CanBeAttacked)
-                {
-                    entityData.Attack();
-                }
-
-            }
-        }
-    }
+        
+    }*/
 
 }

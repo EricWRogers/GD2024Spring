@@ -12,8 +12,8 @@ public class EntityData
     
 
     [Space(10)]
+     public AbilityData basicAttack;
     public List <AbilityData> entityAbilities;
-
 
     [Space(10)]
 
@@ -56,6 +56,9 @@ public class EntityData
 
     public EntityData _target;
 
+    [HideInInspector]
+    public EntityController _charCont;
+
     public void Init()
     {
         if (entityGroup == EntityGroup.Friendly)
@@ -72,7 +75,7 @@ public class EntityData
         entityState = EntityState.Idle;
     }
 
-    public void Attack()
+    public void Attack(AbilityData ability)
     {
         if(entityState == EntityState.Died)
             return;
@@ -81,7 +84,16 @@ public class EntityData
         OnAttack.Invoke();
 
         //TEMP ATTACK
-        _target.Damage(10);
+
+        switch(ability.output)
+        {
+            case AbilityOutput.Damage:
+                _target.Damage(ability.abValue);
+                break;
+            case AbilityOutput.Heal:
+                _target.Heal(ability.abValue);
+                break;
+        }
 
         if(entityGroup == EntityGroup.Friendly)
         {
@@ -89,6 +101,14 @@ public class EntityData
         }
 
         entityState = EntityState.Attacking;
+
+    }
+
+
+    public void Heal(int healAmount)
+    {
+        curHealth = Mathf.Clamp(curHealth + healAmount, 0, maxHealth);
+        entUI.UpdateHealthBar(curHealth, maxHealth);
 
     }
 
@@ -169,10 +189,14 @@ public class EntityData
         foreach(var item in GameObject.FindObjectsOfType<EntityController>())
         {
             if(item.entityData.entityGroup != EntityGroup.Enemy)
-            item.entityData.ResetUINameText();
+            {
+                item.entityData.ResetUINameText(); 
+            }
+           
         }
 
         entUI.physicUI.entityUI.color = Color.cyan;
+        BattleManager.Instance.currentCharacter = _charCont;
     }
 
     public void ResetUINameText()

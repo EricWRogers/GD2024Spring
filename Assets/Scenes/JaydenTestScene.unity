@@ -304,6 +304,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entityData:
     characterName: R_01
+    basicAttack:
+      abilityName: Rocket Punch
+      abValue: 10
+      energyCost: 0
+      type: 0
+      output: 0
     entityAbilities:
     - abilityName: 
       abValue: 0
@@ -338,6 +344,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
     playerJustAttacked: 0
+    _charCont: {fileID: 0}
   targetData: {fileID: 1189796741}
 --- !u!4 &138344240
 Transform:
@@ -673,6 +680,7 @@ GameObject:
   m_Component:
   - component: {fileID: 220443551}
   - component: {fileID: 220443550}
+  - component: {fileID: 220443552}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -713,6 +721,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &220443552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 220443549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c6046644efc6c84d9d0260474d2b349, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentCharacter: {fileID: 0}
 --- !u!1 &252568588
 GameObject:
   m_ObjectHideFlags: 0
@@ -2301,6 +2322,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entityData:
     characterName: John
+    basicAttack:
+      abilityName: AbilityOne
+      abValue: 10
+      energyCost: 1
+      type: 1
+      output: 0
     entityAbilities: []
     entUI:
       physicUI: {fileID: 0}
@@ -2325,6 +2352,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
     playerJustAttacked: 0
+    _charCont: {fileID: 0}
   targetData: {fileID: 138344239}
 --- !u!4 &1189796742
 Transform:
@@ -2797,6 +2825,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entityData:
     characterName: Enemy
+    basicAttack:
+      abilityName: AbilityOne
+      abValue: 10
+      energyCost: 1
+      type: 1
+      output: 0
     entityAbilities: []
     entUI:
       physicUI: {fileID: 0}
@@ -2821,6 +2855,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
     playerJustAttacked: 0
+    _charCont: {fileID: 0}
   targetData: {fileID: 138344239}
 --- !u!4 &1490266149
 Transform:
