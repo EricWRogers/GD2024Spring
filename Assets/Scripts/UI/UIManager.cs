@@ -21,6 +21,11 @@ public class UIManager : MonoBehaviour
 
     public GameObject actionWindow;
 
+    [Header("Ability Window")]
+    public Transform abilityUIHolder;
+    public GameObject abiilityUIPrefab;
+
+
     public static int currentUICount  = 1;
 
     private void Awake()
@@ -47,5 +52,15 @@ public class UIManager : MonoBehaviour
         onClickEvent.charHolder = passedData;
 
         processedUI = rowTmpInfo;
+    }
+
+    public void FillAbilityWindow()
+    {
+
+    }
+
+    void CleanAbilityWindow()
+    {
+
     }
 }
