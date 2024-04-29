@@ -58,11 +58,16 @@ public class UIManager : MonoBehaviour
     public void FillAbilityWindow(EntityData data)
     {
         CleanAbilityWindow();
-        foreach (var item in data.entityAbilities)
+        for (int i =0; i < data.entityAbilities.Count; i++)
         {
             GameObject tmpAbilityPrefab = Instantiate(abilityUIPrefab);
             tmpAbilityPrefab.transform.SetParent(abilityUIHolder);
+
+            AbilityUI tmpAbUI = tmpAbilityPrefab.GetComponent<AbilityUI>();
+            tmpAbUI.abilityIndex = i;
         }
+
+        
     }
 
     void CleanAbilityWindow()
