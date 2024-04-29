@@ -63,9 +63,9 @@ public class EntityData
     {
         if (entityGroup == EntityGroup.Friendly)
         {
+            entUI.charData = this;
             entUI.Init(maxHealth, curHealth, maxEnergy, curEnergy, characterName, speedLimit, maxOC); 
             onJustReady.AddListener(OnReadyDefault);
-
         }
         
 
@@ -184,6 +184,16 @@ public class EntityData
 
     void OnReadyDefault()
     {
+        SelectCharacter();
+    }
+
+    public void SelectCharacter()
+    {
+
+        if(!ActionReady)
+            return;
+
+        
         UIManager.Instance.actionWindow.SetActive(true);
 
         foreach(var item in GameObject.FindObjectsOfType<EntityController>())
@@ -248,6 +258,8 @@ public class UIData
     public RowUI physicUI;
     public int placeInUi = 1;
 
+    [HideInInspector]
+    public EntityData charData;
     
     public void Init(int maxHealth, int curHealth, int maxEnergy, int curEnergy, string charName, float speedLimit, float OCmax)
     {
@@ -261,7 +273,7 @@ public class UIData
         else
         {
             //row spawning
-            UIManager.Instance.SpawnRow(out physicUI);
+            UIManager.Instance.SpawnRow(out physicUI, charData);
 
         }
         //Health Slider Setup

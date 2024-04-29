@@ -13,12 +13,17 @@ public class BattleManager : MonoBehaviour
         Instance = this;
     }
 
+    public void SelectCharacter(EntityData newChar)
+    {
+        newChar.SelectCharacter();
+    }
+
     public void DoBasicAttackOnTarget()
     {
         if (currentCharacter.entityData.ActionReady)
         {
             Debug.Log("Ready to attack");
-            if (currentCharacter.entityData.entityGroup == EntityGroup.Friendly && Input.GetKeyDown(KeyCode.Space))
+            if (currentCharacter.entityData.entityGroup == EntityGroup.Friendly)
             {
                 Debug.Log("Player did an action");
                 if (currentCharacter.entityData._target.CanBeAttacked)

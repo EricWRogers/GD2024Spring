@@ -27,7 +27,7 @@ public class UIManager : MonoBehaviour
         Instance = this;
     }
 
-    public void SpawnRow(out RowUI processedUI)
+    public void SpawnRow(out RowUI processedUI, EntityData passedData)
     {
         //instantiate the row
         GameObject tmpRow = Instantiate(rowPrefab);
@@ -38,10 +38,12 @@ public class UIManager : MonoBehaviour
         GameObject tmpName = Instantiate(namePrefab);
         tmpName.transform.SetParent(nameHolder, false);
         TMPro.TMP_Text txtName = tmpName.GetComponent<TMPro.TMP_Text>();
+        OnClickGenericEvent onClickEvent = tmpName.GetComponent<OnClickGenericEvent>();
 
         tmpRow.name = "Character" + tmpRow.transform.childCount;
         
         rowTmpInfo.entityUI = txtName;
+        onClickEvent.charHolder = passedData;
 
         processedUI = rowTmpInfo;
     }
