@@ -23,7 +23,8 @@ public class UIManager : MonoBehaviour
 
     [Header("Ability Window")]
     public Transform abilityUIHolder;
-    public GameObject abiilityUIPrefab;
+    public GameObject abilityUIPrefab;
+    public Text manaNeededUI;
 
 
     public static int currentUICount  = 1;
@@ -54,13 +55,21 @@ public class UIManager : MonoBehaviour
         processedUI = rowTmpInfo;
     }
 
-    public void FillAbilityWindow()
+    public void FillAbilityWindow(EntityData data)
     {
-
+        CleanAbilityWindow();
+        foreach (var item in data.entityAbilities)
+        {
+            GameObject tmpAbilityPrefab = Instantiate(abilityUIPrefab);
+            tmpAbilityPrefab.transform.SetParent(abilityUIHolder);
+        }
     }
 
     void CleanAbilityWindow()
     {
-
+        foreach (Transform item in abilityUIHolder)
+        {
+            Destroy(item.gameObject);
+        }
     }
 }
