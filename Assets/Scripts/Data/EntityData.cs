@@ -17,7 +17,7 @@ public class EntityData
 
     [Space(10)]
 
-    public UIData entityUI;
+    public UIData entUI;
 
     [Space(10)]
 
@@ -47,6 +47,7 @@ public class EntityData
 
     public UnityEvent OnAttack;
     public UnityEvent onWasAttacked;
+    public UnityEvent onJustReady;
 
     public bool playerJustAttacked;
 
@@ -59,7 +60,9 @@ public class EntityData
     {
         if (entityGroup == EntityGroup.Friendly)
         {
-           entityUI.Init(maxHealth, curHealth, maxEnergy, curEnergy, characterName, speedLimit, maxOC); 
+            entUI.Init(maxHealth, curHealth, maxEnergy, curEnergy, characterName, speedLimit, maxOC); 
+            onJustReady.AddListener(OnReadyDefault);
+
         }
         
 
@@ -71,6 +74,10 @@ public class EntityData
 
     public void Attack()
     {
+        if(entityState == EntityState.Died)
+            return;
+
+
         OnAttack.Invoke();
 
         //TEMP ATTACK
@@ -80,6 +87,9 @@ public class EntityData
         {
             IncreaseOC(5);
         }
+
+        entityState = EntityState.Attacking;
+
     }
 
     public void Damage(int damageAmount)
@@ -98,7 +108,7 @@ public class EntityData
         if (entityGroup == EntityGroup.Friendly)
         {
             IncreaseOC(5);
-            entityUI.UpdateHealthBar(curHealth, maxHealth);
+            entUI.UpdateHealthBar(curHealth, maxHealth);
         }
 
 
@@ -138,7 +148,7 @@ public class EntityData
         curOC += amount;
         curOC = Mathf.Clamp(curOC, 0, maxOC);
 
-        entityUI.UpdateOCBar(curOC);
+        entUI.UpdateOCBar(curOC);
     }
     void  EntityAttackDefault()
     {
@@ -152,30 +162,58 @@ public class EntityData
         Debug.Log(characterName + " was attacked");
     }
 
+    void OnReadyDefault()
+    {
+        UIManager.Instance.actionWindow.SetActive(true);
+
+        foreach(var item in GameObject.FindObjectsOfType<EntityController>())
+        {
+            if(item.entityData.entityGroup != EntityGroup.Enemy)
+            item.entityData.ResetUINameText();
+        }
+
+        entUI.physicUI.entityUI.color = Color.cyan;
+    }
+
+    public void ResetUINameText()
+    {
+        entUI.physicUI.entityUI.color = Color.white;
+
+    }
+
     public IEnumerator EntityLoop()
     {
-        while(entityState != EntityState.Died)
+        while (entityState != EntityState.Died)
         {
-            if (curSpeed >= speedLimit)
+            while (curSpeed < speedLimit)
             {
-                curSpeed = speedLimit;
-                entityState = EntityState.Ready;
-            }
-            else
-            {
-                //increase currentspeed
                 curSpeed += Time.deltaTime;
 
-                if(entityGroup == EntityGroup.Friendly)
+                if (entityGroup == EntityGroup.Friendly)
                 {
-                    entityUI.UpdateTimeBar(curSpeed);
+                    entUI.UpdateTimeBar(curSpeed);
                 }
-                
-                entityState = EntityState.Idle;
+
+                if(entityState == EntityState.Attacked)
+                {
+                    entityState = EntityState.Idle;
+                }
+                yield return null;
+
             }
+            //We are ready when the character exits the loop
+            curSpeed = speedLimit;
+            entityState= EntityState.Ready;
             
-            yield return null;
-        }  
+            onJustReady.Invoke();
+            yield return new WaitUntil(()=> entityState == EntityState.Attacking);
+
+            entityState = EntityState.Idle;
+
+            yield return new WaitUntil(()=> entityState == EntityState.Idle);
+
+        }
+
     }
 
 }

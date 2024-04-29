@@ -18,6 +18,8 @@ public class UIManager : MonoBehaviour
     [Header("First PlayerUI")]
     public RowUI defaultRowUI;
 
+    public GameObject actionWindow;
+
     public static int currentUICount  = 1;
 
     private void Awake()
