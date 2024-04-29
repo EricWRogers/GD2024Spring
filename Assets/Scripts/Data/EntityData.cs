@@ -268,6 +268,7 @@ public class UIData
         {
             //Do not spawn another row
             physicUI = UIManager.Instance.defaultRowUI;
+            UIManager.Instance.firstOnClick.charHolder = charData;
         
         }
         else

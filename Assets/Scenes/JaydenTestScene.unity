@@ -324,6 +324,145 @@ MonoBehaviour:
     entUI:
       physicUI: {fileID: 0}
       placeInUi: 1
+      charData:
+        characterName: CharacterName
+        basicAttack:
+          abilityName: AbilityOne
+          abValue: 10
+          energyCost: 1
+          type: 1
+          output: 0
+        entityAbilities: []
+        entUI:
+          physicUI: {fileID: 0}
+          placeInUi: 1
+          charData:
+            characterName: CharacterName
+            basicAttack:
+              abilityName: AbilityOne
+              abValue: 10
+              energyCost: 1
+              type: 1
+              output: 0
+            entityAbilities: []
+            entUI:
+              physicUI: {fileID: 0}
+              placeInUi: 1
+              charData:
+                characterName: CharacterName
+                basicAttack:
+                  abilityName: AbilityOne
+                  abValue: 10
+                  energyCost: 1
+                  type: 1
+                  output: 0
+                entityAbilities: []
+                entUI:
+                  physicUI: {fileID: 0}
+                  placeInUi: 1
+                  charData:
+                    characterName: CharacterName
+                    basicAttack:
+                      abilityName: AbilityOne
+                      abValue: 10
+                      energyCost: 1
+                      type: 1
+                      output: 0
+                    entityAbilities: []
+                    entUI:
+                      physicUI: {fileID: 0}
+                      placeInUi: 1
+                      charData:
+                        characterName: CharacterName
+                        maxHealth: 100
+                        curHealth: 100
+                        maxEnergy: 100
+                        curEnergy: 100
+                        maxOC: 100
+                        curOC: 100
+                        speedLimit: 10
+                        curSpeed: 10
+                        entityState: 0
+                        entityGroup: 0
+                        playerJustAttacked: 0
+                    maxHealth: 100
+                    curHealth: 100
+                    maxEnergy: 100
+                    curEnergy: 100
+                    maxOC: 100
+                    curOC: 100
+                    speedLimit: 10
+                    curSpeed: 10
+                    entityState: 0
+                    entityGroup: 0
+                    OnAttack: {}
+                    onWasAttacked: {}
+                    onJustReady: {}
+                    playerJustAttacked: 0
+                    _charCont: {fileID: 0}
+                maxHealth: 100
+                curHealth: 100
+                maxEnergy: 100
+                curEnergy: 100
+                maxOC: 100
+                curOC: 100
+                speedLimit: 10
+                curSpeed: 10
+                entityState: 0
+                entityGroup: 0
+                OnAttack:
+                  m_PersistentCalls:
+                    m_Calls: []
+                onWasAttacked:
+                  m_PersistentCalls:
+                    m_Calls: []
+                onJustReady:
+                  m_PersistentCalls:
+                    m_Calls: []
+                playerJustAttacked: 0
+                _charCont: {fileID: 0}
+            maxHealth: 100
+            curHealth: 100
+            maxEnergy: 100
+            curEnergy: 100
+            maxOC: 100
+            curOC: 100
+            speedLimit: 10
+            curSpeed: 10
+            entityState: 0
+            entityGroup: 0
+            OnAttack:
+              m_PersistentCalls:
+                m_Calls: []
+            onWasAttacked:
+              m_PersistentCalls:
+                m_Calls: []
+            onJustReady:
+              m_PersistentCalls:
+                m_Calls: []
+            playerJustAttacked: 0
+            _charCont: {fileID: 0}
+        maxHealth: 100
+        curHealth: 100
+        maxEnergy: 100
+        curEnergy: 100
+        maxOC: 100
+        curOC: 100
+        speedLimit: 10
+        curSpeed: 10
+        entityState: 0
+        entityGroup: 0
+        OnAttack:
+          m_PersistentCalls:
+            m_Calls: []
+        onWasAttacked:
+          m_PersistentCalls:
+            m_Calls: []
+        onJustReady:
+          m_PersistentCalls:
+            m_Calls: []
+        playerJustAttacked: 0
+        _charCont: {fileID: 0}
     maxHealth: 100
     curHealth: 100
     maxEnergy: 100
@@ -336,7 +475,19 @@ MonoBehaviour:
     entityGroup: 0
     OnAttack:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 696943162}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
     onWasAttacked:
       m_PersistentCalls:
         m_Calls: []
@@ -346,6 +497,7 @@ MonoBehaviour:
     playerJustAttacked: 0
     _charCont: {fileID: 0}
   targetData: {fileID: 1490266148}
+  sprite: {fileID: 0}
 --- !u!4 &138344240
 Transform:
   m_ObjectHideFlags: 0
@@ -705,6 +857,7 @@ MonoBehaviour:
   rowPrefab: {fileID: 3226106405662160456, guid: 05913eb8116bd4d45923357771442708, type: 3}
   namePrefab: {fileID: 1313713932368556999, guid: 74b8563ade8bd154e936206f56aedab9, type: 3}
   defaultRowUI: {fileID: 42110479}
+  firstOnClick: {fileID: 1952502204}
   actionWindow: {fileID: 696943162}
 --- !u!4 &220443551
 Transform:
@@ -2344,6 +2497,145 @@ MonoBehaviour:
     entUI:
       physicUI: {fileID: 0}
       placeInUi: 1
+      charData:
+        characterName: CharacterName
+        basicAttack:
+          abilityName: AbilityOne
+          abValue: 10
+          energyCost: 1
+          type: 1
+          output: 0
+        entityAbilities: []
+        entUI:
+          physicUI: {fileID: 0}
+          placeInUi: 1
+          charData:
+            characterName: CharacterName
+            basicAttack:
+              abilityName: AbilityOne
+              abValue: 10
+              energyCost: 1
+              type: 1
+              output: 0
+            entityAbilities: []
+            entUI:
+              physicUI: {fileID: 0}
+              placeInUi: 1
+              charData:
+                characterName: CharacterName
+                basicAttack:
+                  abilityName: AbilityOne
+                  abValue: 10
+                  energyCost: 1
+                  type: 1
+                  output: 0
+                entityAbilities: []
+                entUI:
+                  physicUI: {fileID: 0}
+                  placeInUi: 1
+                  charData:
+                    characterName: CharacterName
+                    basicAttack:
+                      abilityName: AbilityOne
+                      abValue: 10
+                      energyCost: 1
+                      type: 1
+                      output: 0
+                    entityAbilities: []
+                    entUI:
+                      physicUI: {fileID: 0}
+                      placeInUi: 1
+                      charData:
+                        characterName: CharacterName
+                        maxHealth: 100
+                        curHealth: 100
+                        maxEnergy: 100
+                        curEnergy: 100
+                        maxOC: 100
+                        curOC: 100
+                        speedLimit: 10
+                        curSpeed: 10
+                        entityState: 0
+                        entityGroup: 0
+                        playerJustAttacked: 0
+                    maxHealth: 100
+                    curHealth: 100
+                    maxEnergy: 100
+                    curEnergy: 100
+                    maxOC: 100
+                    curOC: 100
+                    speedLimit: 10
+                    curSpeed: 10
+                    entityState: 0
+                    entityGroup: 0
+                    OnAttack: {}
+                    onWasAttacked: {}
+                    onJustReady: {}
+                    playerJustAttacked: 0
+                    _charCont: {fileID: 0}
+                maxHealth: 100
+                curHealth: 100
+                maxEnergy: 100
+                curEnergy: 100
+                maxOC: 100
+                curOC: 100
+                speedLimit: 10
+                curSpeed: 10
+                entityState: 0
+                entityGroup: 0
+                OnAttack:
+                  m_PersistentCalls:
+                    m_Calls: []
+                onWasAttacked:
+                  m_PersistentCalls:
+                    m_Calls: []
+                onJustReady:
+                  m_PersistentCalls:
+                    m_Calls: []
+                playerJustAttacked: 0
+                _charCont: {fileID: 0}
+            maxHealth: 100
+            curHealth: 100
+            maxEnergy: 100
+            curEnergy: 100
+            maxOC: 100
+            curOC: 100
+            speedLimit: 10
+            curSpeed: 10
+            entityState: 0
+            entityGroup: 0
+            OnAttack:
+              m_PersistentCalls:
+                m_Calls: []
+            onWasAttacked:
+              m_PersistentCalls:
+                m_Calls: []
+            onJustReady:
+              m_PersistentCalls:
+                m_Calls: []
+            playerJustAttacked: 0
+            _charCont: {fileID: 0}
+        maxHealth: 100
+        curHealth: 100
+        maxEnergy: 100
+        curEnergy: 100
+        maxOC: 100
+        curOC: 100
+        speedLimit: 10
+        curSpeed: 10
+        entityState: 0
+        entityGroup: 0
+        OnAttack:
+          m_PersistentCalls:
+            m_Calls: []
+        onWasAttacked:
+          m_PersistentCalls:
+            m_Calls: []
+        onJustReady:
+          m_PersistentCalls:
+            m_Calls: []
+        playerJustAttacked: 0
+        _charCont: {fileID: 0}
     maxHealth: 100
     curHealth: 100
     maxEnergy: 100
@@ -2356,7 +2648,19 @@ MonoBehaviour:
     entityGroup: 0
     OnAttack:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 696943162}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
     onWasAttacked:
       m_PersistentCalls:
         m_Calls: []
@@ -2366,6 +2670,7 @@ MonoBehaviour:
     playerJustAttacked: 0
     _charCont: {fileID: 0}
   targetData: {fileID: 138344239}
+  sprite: {fileID: 0}
 --- !u!4 &1189796742
 Transform:
   m_ObjectHideFlags: 0
@@ -2847,6 +3152,145 @@ MonoBehaviour:
     entUI:
       physicUI: {fileID: 0}
       placeInUi: 1
+      charData:
+        characterName: CharacterName
+        basicAttack:
+          abilityName: AbilityOne
+          abValue: 10
+          energyCost: 1
+          type: 1
+          output: 0
+        entityAbilities: []
+        entUI:
+          physicUI: {fileID: 0}
+          placeInUi: 1
+          charData:
+            characterName: CharacterName
+            basicAttack:
+              abilityName: AbilityOne
+              abValue: 10
+              energyCost: 1
+              type: 1
+              output: 0
+            entityAbilities: []
+            entUI:
+              physicUI: {fileID: 0}
+              placeInUi: 1
+              charData:
+                characterName: CharacterName
+                basicAttack:
+                  abilityName: AbilityOne
+                  abValue: 10
+                  energyCost: 1
+                  type: 1
+                  output: 0
+                entityAbilities: []
+                entUI:
+                  physicUI: {fileID: 0}
+                  placeInUi: 1
+                  charData:
+                    characterName: CharacterName
+                    basicAttack:
+                      abilityName: AbilityOne
+                      abValue: 10
+                      energyCost: 1
+                      type: 1
+                      output: 0
+                    entityAbilities: []
+                    entUI:
+                      physicUI: {fileID: 0}
+                      placeInUi: 1
+                      charData:
+                        characterName: CharacterName
+                        maxHealth: 100
+                        curHealth: 100
+                        maxEnergy: 100
+                        curEnergy: 100
+                        maxOC: 100
+                        curOC: 100
+                        speedLimit: 10
+                        curSpeed: 10
+                        entityState: 0
+                        entityGroup: 0
+                        playerJustAttacked: 0
+                    maxHealth: 100
+                    curHealth: 100
+                    maxEnergy: 100
+                    curEnergy: 100
+                    maxOC: 100
+                    curOC: 100
+                    speedLimit: 10
+                    curSpeed: 10
+                    entityState: 0
+                    entityGroup: 0
+                    OnAttack: {}
+                    onWasAttacked: {}
+                    onJustReady: {}
+                    playerJustAttacked: 0
+                    _charCont: {fileID: 0}
+                maxHealth: 100
+                curHealth: 100
+                maxEnergy: 100
+                curEnergy: 100
+                maxOC: 100
+                curOC: 100
+                speedLimit: 10
+                curSpeed: 10
+                entityState: 0
+                entityGroup: 0
+                OnAttack:
+                  m_PersistentCalls:
+                    m_Calls: []
+                onWasAttacked:
+                  m_PersistentCalls:
+                    m_Calls: []
+                onJustReady:
+                  m_PersistentCalls:
+                    m_Calls: []
+                playerJustAttacked: 0
+                _charCont: {fileID: 0}
+            maxHealth: 100
+            curHealth: 100
+            maxEnergy: 100
+            curEnergy: 100
+            maxOC: 100
+            curOC: 100
+            speedLimit: 10
+            curSpeed: 10
+            entityState: 0
+            entityGroup: 0
+            OnAttack:
+              m_PersistentCalls:
+                m_Calls: []
+            onWasAttacked:
+              m_PersistentCalls:
+                m_Calls: []
+            onJustReady:
+              m_PersistentCalls:
+                m_Calls: []
+            playerJustAttacked: 0
+            _charCont: {fileID: 0}
+        maxHealth: 100
+        curHealth: 100
+        maxEnergy: 100
+        curEnergy: 100
+        maxOC: 100
+        curOC: 100
+        speedLimit: 10
+        curSpeed: 10
+        entityState: 0
+        entityGroup: 0
+        OnAttack:
+          m_PersistentCalls:
+            m_Calls: []
+        onWasAttacked:
+          m_PersistentCalls:
+            m_Calls: []
+        onJustReady:
+          m_PersistentCalls:
+            m_Calls: []
+        playerJustAttacked: 0
+        _charCont: {fileID: 0}
     maxHealth: 100
     curHealth: 100
     maxEnergy: 100
@@ -2869,6 +3313,7 @@ MonoBehaviour:
     playerJustAttacked: 0
     _charCont: {fileID: 0}
   targetData: {fileID: 138344239}
+  sprite: {fileID: 0}
 --- !u!4 &1490266149
 Transform:
   m_ObjectHideFlags: 0
@@ -3847,6 +4292,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1952502204 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5325448973420096798, guid: 74b8563ade8bd154e936206f56aedab9, type: 3}
+  m_PrefabInstance: {fileID: 3398316899794116414}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da1bc31cf0fd4b44089c4dafa289c551, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1953465255

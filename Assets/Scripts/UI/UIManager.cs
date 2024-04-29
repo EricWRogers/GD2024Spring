@@ -17,6 +17,7 @@ public class UIManager : MonoBehaviour
 
     [Header("First PlayerUI")]
     public RowUI defaultRowUI;
+    public OnClickGenericEvent firstOnClick;
 
     public GameObject actionWindow;
 

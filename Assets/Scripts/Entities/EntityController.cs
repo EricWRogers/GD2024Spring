@@ -8,6 +8,8 @@ public class EntityController : MonoBehaviour
     public EntityData entityData;
     public EntityController targetData;
 
+    public Sprite sprite;
+
     private void Awake()
     {
         entityData._charCont = this;
