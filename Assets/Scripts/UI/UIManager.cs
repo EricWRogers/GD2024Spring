@@ -24,7 +24,7 @@ public class UIManager : MonoBehaviour
     [Header("Ability Window")]
     public Transform abilityUIHolder;
     public GameObject abilityUIPrefab;
-    public Text manaNeededUI;
+    public TMPro.TMP_Text energyNeededUI;
 
 
     public static int currentUICount  = 1;
