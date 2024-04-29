@@ -55,10 +55,13 @@ public class UIManager : MonoBehaviour
         processedUI = rowTmpInfo;
     }
 
-    public void FillAbilityWindow(EntityData data)
+    public void FillAbilityWindow()
     {
         CleanAbilityWindow();
-        for (int i =0; i < data.entityAbilities.Count; i++)
+
+        var data = BattleManager.Instance.currentCharacter.entityData.entityAbilities;
+
+        for (int i = 0; i < data.Count; i++)
         {
             GameObject tmpAbilityPrefab = Instantiate(abilityUIPrefab);
             tmpAbilityPrefab.transform.SetParent(abilityUIHolder);
