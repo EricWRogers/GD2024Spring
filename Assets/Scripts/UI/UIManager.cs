@@ -68,6 +68,7 @@ public class UIManager : MonoBehaviour
 
             AbilityUI tmpAbUI = tmpAbilityPrefab.GetComponent<AbilityUI>();
             tmpAbUI.abilityIndex = i;
+            tmpAbUI.Init(data[i].abilityName);
         }
 
         
