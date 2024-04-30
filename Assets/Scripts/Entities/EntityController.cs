@@ -8,6 +8,8 @@ public class EntityController : MonoBehaviour
     public EntityData entityData;
     public EntityController targetData;
 
+    public Coroutine attackQueue;
+
     public Sprite sprite;
 
     private void Awake()
@@ -21,6 +23,8 @@ public class EntityController : MonoBehaviour
 
         StartCoroutine(entityData.EntityLoop());
     }
+
+   
 
     /*private void Update()
     {
