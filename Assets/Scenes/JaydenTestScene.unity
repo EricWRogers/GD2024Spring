@@ -311,14 +311,14 @@ MonoBehaviour:
       type: 0
       output: 0
     entityAbilities:
-    - abilityName: 
-      abValue: 0
-      energyCost: 0
+    - abilityName: EnergyBlast
+      abValue: 25
+      energyCost: 10
       type: 0
       output: 0
-    - abilityName: 
-      abValue: 0
-      energyCost: 0
+    - abilityName: Oil slick
+      abValue: 15
+      energyCost: 5
       type: 0
       output: 0
     entUI:
