@@ -29,10 +29,12 @@ public class AbilityUI : MonoBehaviour, IPointerDownHandler
                 if(isSelected)
                 {
                     BattleManager.Instance.currentCharacter.entityData.Attack(charData.entityAbilities[i]);
+                    isSelected = false;
                 }
                 else
                 {
                     UIManager.Instance.SetEnergyNeededUI(charData.entityAbilities[i].energyCost, charData.curEnergy);
+                    isSelected = true;
                 }
                 break;
             }

@@ -83,7 +83,7 @@ public class EntityData
 
         OnAttack.Invoke();
 
-        Debug.Log("attacked with" + ability.abilityName + "to" + _target.characterName);
+        Debug.Log("attacked with " + ability.abilityName + "at" + _target.characterName);
 
         switch(ability.output)
         {
@@ -201,7 +201,8 @@ public class EntityData
         {
             if(item.entityData.entityGroup != EntityGroup.Enemy)
             {
-                item.entityData.ResetUINameText(); 
+                if(item.entityData.entityGroup != EntityGroup.Friendly)
+                    item.entityData.ResetUINameText(); 
             }
            
         }
