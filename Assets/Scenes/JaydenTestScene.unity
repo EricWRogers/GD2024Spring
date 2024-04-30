@@ -871,6 +871,7 @@ MonoBehaviour:
   defaultRowUI: {fileID: 42110479}
   firstOnClick: {fileID: 1952502204}
   actionWindow: {fileID: 696943162}
+  abilityWindow: {fileID: 1089869647}
   abilityUIHolder: {fileID: 1877976738}
   abilityUIPrefab: {fileID: 5740716918155169769, guid: 31d9ac90c16a0e84cae8752f348a5005, type: 3}
   energyNeededUI: {fileID: 569287106}
@@ -1316,7 +1317,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.77038574, y: 0}
+  m_AnchoredPosition: {x: 0.7705078, y: 0}
   m_SizeDelta: {x: -20.4592, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &520969393
