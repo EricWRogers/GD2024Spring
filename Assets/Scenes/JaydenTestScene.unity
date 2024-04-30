@@ -872,7 +872,7 @@ MonoBehaviour:
   firstOnClick: {fileID: 1952502204}
   actionWindow: {fileID: 696943162}
   abilityUIHolder: {fileID: 1877976738}
-  abilityUIPrefab: {fileID: 3226106405662160456, guid: 05913eb8116bd4d45923357771442708, type: 3}
+  abilityUIPrefab: {fileID: 5740716918155169769, guid: 31d9ac90c16a0e84cae8752f348a5005, type: 3}
   energyNeededUI: {fileID: 569287106}
 --- !u!4 &220443551
 Transform:
@@ -2353,12 +2353,17 @@ MonoBehaviour:
   entityData:
     characterName: John
     basicAttack:
-      abilityName: AbilityOne
+      abilityName: AbilityOneJohn
       abValue: 10
       energyCost: 1
       type: 1
       output: 0
-    entityAbilities: []
+    entityAbilities:
+    - abilityName: Ion cannon
+      abValue: 12
+      energyCost: 6
+      type: 0
+      output: 0
     entUI:
       physicUI: {fileID: 0}
       placeInUi: 1
