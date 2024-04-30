@@ -73,6 +73,11 @@ public class UIManager : MonoBehaviour
         
     }
 
+    public void SetEnergyNeededUI(int abilityEnergy, int charCurrEnergy)
+    {
+        energyNeededUI.text = abilityEnergy + "/" + charCurrEnergy;
+    }
+
     void CleanAbilityWindow()
     {
         foreach (Transform item in abilityUIHolder)

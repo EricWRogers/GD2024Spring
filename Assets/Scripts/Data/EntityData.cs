@@ -83,7 +83,7 @@ public class EntityData
 
         OnAttack.Invoke();
 
-        //TEMP ATTACK
+        Debug.Log("attacked with" + ability.abilityName + "to" + _target.characterName);
 
         switch(ability.output)
         {
