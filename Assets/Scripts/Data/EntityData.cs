@@ -195,6 +195,7 @@ public class EntityData
 
         
         UIManager.Instance.actionWindow.SetActive(true);
+        UIManager.Instance.abilityWindow.SetActive(false);
 
         foreach(var item in GameObject.FindObjectsOfType<EntityController>())
         {

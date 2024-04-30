@@ -20,6 +20,7 @@ public class UIManager : MonoBehaviour
     public OnClickGenericEvent firstOnClick;
 
     public GameObject actionWindow;
+    public GameObject abilityWindow;
 
     [Header("Ability Window")]
     public Transform abilityUIHolder;
