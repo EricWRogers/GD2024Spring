@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: ef92ccb9eebfb7b4e8b202c50a632c5a
+guid: 77f1d6a6b55a3984786408390863861a
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -81,19 +81,6 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -123,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Worm up down_0
+      name: Worm up down up_0
       rect:
         serializedVersion: 2
         x: 0
@@ -137,14 +124,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 83647ca7e0d4ef246b1cfa5625a34a5b
-      internalID: 1820685338
+      spriteID: f76cabb209b258447b88d1d4a5892654
+      internalID: 1365610538
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Worm up down_1
+      name: Worm up down up_1
       rect:
         serializedVersion: 2
         x: 1000
@@ -158,14 +145,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b613fa826a17ee34cbfe187bf89faafd
-      internalID: 1070929658
+      spriteID: 2c4b8643b7a51984b8dce1df27b64f05
+      internalID: 1990529948
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Worm up down_2
+      name: Worm up down up_2
       rect:
         serializedVersion: 2
         x: 2000
@@ -179,14 +166,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c5c0597771222284eb5d39e47bc9f273
-      internalID: -795308934
+      spriteID: 3e7da56cc64e42449a5f0762b478d9a5
+      internalID: -759774523
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Worm up down_3
+      name: Worm up down up_3
       rect:
         serializedVersion: 2
         x: 3000
@@ -200,8 +187,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ee42451b351c15446a9e5dfba698beab
-      internalID: 792791441
+      spriteID: 05fd785f770a39d48b61196cc8aaadcd
+      internalID: 1147724331
       vertices: []
       indices: 
       edges: []
@@ -217,10 +204,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Worm up down_0: 1820685338
-      Worm up down_1: 1070929658
-      Worm up down_2: -795308934
-      Worm up down_3: 792791441
+      Worm up down up_0: 1365610538
+      Worm up down up_1: 1990529948
+      Worm up down up_2: -759774523
+      Worm up down up_3: 1147724331
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

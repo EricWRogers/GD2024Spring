@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 88db898ef92f0e846961ee62dd7a215b
+guid: 72d1619275172f34199ae2f7a913c259
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,13 +110,34 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Worm side side_0
+      name: Pause menu buttons_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 500
+        width: 1000
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a2798f7dcaa24b48a9fc8e05beb49e9
+      internalID: 130957974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pause menu buttons_1
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 1000
-        height: 1000
+        height: 500
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,71 +145,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5e4109bba80eb9e45afa62c6135097d2
-      internalID: -1869635533
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Worm side side_1
-      rect:
-        serializedVersion: 2
-        x: 1000
-        y: 0
-        width: 1000
-        height: 1000
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bc71d9fe84818314cb3cd067bacf0f4b
-      internalID: 1205159824
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Worm side side_2
-      rect:
-        serializedVersion: 2
-        x: 2000
-        y: 0
-        width: 1000
-        height: 1000
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ba7f1ed84c76dac4bacc4dd986d1345e
-      internalID: 1917874076
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Worm side side_3
-      rect:
-        serializedVersion: 2
-        x: 3000
-        y: 0
-        width: 1000
-        height: 1000
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2e3f1abf253365a41a1eb16477bf175b
-      internalID: -527240094
+      spriteID: 186a604450b51744bb2a90f46869d93d
+      internalID: 1869448369
       vertices: []
       indices: 
       edges: []
@@ -204,10 +162,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Worm side side_0: -1869635533
-      Worm side side_1: 1205159824
-      Worm side side_2: 1917874076
-      Worm side side_3: -527240094
+      Pause menu buttons_0: 130957974
+      Pause menu buttons_1: 1869448369
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
