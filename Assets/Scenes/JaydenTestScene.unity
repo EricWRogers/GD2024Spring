@@ -396,6 +396,7 @@ MonoBehaviour:
                     entityState: 0
                     entityGroup: 0
                     OnAttack: {}
+                    OnAttackQueue: {}
                     onWasAttacked: {}
                     onJustReady: {}
                     playerJustAttacked: 0
@@ -411,6 +412,9 @@ MonoBehaviour:
                 entityState: 0
                 entityGroup: 0
                 OnAttack:
+                  m_PersistentCalls:
+                    m_Calls: []
+                OnAttackQueue:
                   m_PersistentCalls:
                     m_Calls: []
                 onWasAttacked:
@@ -434,6 +438,9 @@ MonoBehaviour:
             OnAttack:
               m_PersistentCalls:
                 m_Calls: []
+            OnAttackQueue:
+              m_PersistentCalls:
+                m_Calls: []
             onWasAttacked:
               m_PersistentCalls:
                 m_Calls: []
@@ -455,6 +462,9 @@ MonoBehaviour:
         OnAttack:
           m_PersistentCalls:
             m_Calls: []
+        OnAttackQueue:
+          m_PersistentCalls:
+            m_Calls: []
         onWasAttacked:
           m_PersistentCalls:
             m_Calls: []
@@ -469,7 +479,7 @@ MonoBehaviour:
     curEnergy: 100
     maxOC: 100
     curOC: 0
-    speedLimit: 3.2
+    speedLimit: 1
     curSpeed: 0
     entityState: 0
     entityGroup: 0
@@ -488,6 +498,9 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+    OnAttackQueue:
+      m_PersistentCalls:
+        m_Calls: []
     onWasAttacked:
       m_PersistentCalls:
         m_Calls:
@@ -2707,6 +2720,7 @@ MonoBehaviour:
                     entityState: 0
                     entityGroup: 0
                     OnAttack: {}
+                    OnAttackQueue: {}
                     onWasAttacked: {}
                     onJustReady: {}
                     playerJustAttacked: 0
@@ -2722,6 +2736,9 @@ MonoBehaviour:
                 entityState: 0
                 entityGroup: 0
                 OnAttack:
+                  m_PersistentCalls:
+                    m_Calls: []
+                OnAttackQueue:
                   m_PersistentCalls:
                     m_Calls: []
                 onWasAttacked:
@@ -2745,6 +2762,9 @@ MonoBehaviour:
             OnAttack:
               m_PersistentCalls:
                 m_Calls: []
+            OnAttackQueue:
+              m_PersistentCalls:
+                m_Calls: []
             onWasAttacked:
               m_PersistentCalls:
                 m_Calls: []
@@ -2766,6 +2786,9 @@ MonoBehaviour:
         OnAttack:
           m_PersistentCalls:
             m_Calls: []
+        OnAttackQueue:
+          m_PersistentCalls:
+            m_Calls: []
         onWasAttacked:
           m_PersistentCalls:
             m_Calls: []
@@ -2780,7 +2803,7 @@ MonoBehaviour:
     curEnergy: 100
     maxOC: 100
     curOC: 0
-    speedLimit: 3
+    speedLimit: 1
     curSpeed: 0
     entityState: 0
     entityGroup: 0
@@ -2799,6 +2822,9 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+    OnAttackQueue:
+      m_PersistentCalls:
+        m_Calls: []
     onWasAttacked:
       m_PersistentCalls:
         m_Calls:
@@ -3300,6 +3326,7 @@ MonoBehaviour:
                     entityState: 0
                     entityGroup: 0
                     OnAttack: {}
+                    OnAttackQueue: {}
                     onWasAttacked: {}
                     onJustReady: {}
                     playerJustAttacked: 0
@@ -3315,6 +3342,9 @@ MonoBehaviour:
                 entityState: 0
                 entityGroup: 0
                 OnAttack:
+                  m_PersistentCalls:
+                    m_Calls: []
+                OnAttackQueue:
                   m_PersistentCalls:
                     m_Calls: []
                 onWasAttacked:
@@ -3338,6 +3368,9 @@ MonoBehaviour:
             OnAttack:
               m_PersistentCalls:
                 m_Calls: []
+            OnAttackQueue:
+              m_PersistentCalls:
+                m_Calls: []
             onWasAttacked:
               m_PersistentCalls:
                 m_Calls: []
@@ -3359,6 +3392,9 @@ MonoBehaviour:
         OnAttack:
           m_PersistentCalls:
             m_Calls: []
+        OnAttackQueue:
+          m_PersistentCalls:
+            m_Calls: []
         onWasAttacked:
           m_PersistentCalls:
             m_Calls: []
@@ -3378,6 +3414,9 @@ MonoBehaviour:
     entityState: 0
     entityGroup: 1
     OnAttack:
+      m_PersistentCalls:
+        m_Calls: []
+    OnAttackQueue:
       m_PersistentCalls:
         m_Calls: []
     onWasAttacked:

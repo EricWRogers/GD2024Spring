@@ -36,6 +36,10 @@ public class AbilityUI : MonoBehaviour, IPointerDownHandler
                     UIManager.Instance.SetEnergyNeededUI(charData.entityAbilities[i].energyCost, charData.curEnergy);
                     isSelected = true;
                 }
+
+
+
+                
                 break;
             }
         }

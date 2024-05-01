@@ -220,24 +220,22 @@ public class EntityData
 
     public void SelectCharacter()
     {
-
-        if(!ActionReady)
+        if (!ActionReady)
+        {
             return;
+        }
 
-        
         UIManager.Instance.actionWindow.SetActive(true);
         UIManager.Instance.abilityWindow.SetActive(false);
 
         foreach(var item in GameObject.FindObjectsOfType<EntityController>())
         {
-            if(item.entityData.entityGroup != EntityGroup.Enemy)
+            if (item.entityData.entityGroup != EntityGroup.Enemy)
             {
-                if(item.entityData.entityGroup != EntityGroup.Friendly)
-                    item.entityData.ResetUINameText(); 
+                item.entityData.ResetUINameText();
             }
-           
         }
-
+        
         entUI.physicUI.entityUI.color = Color.cyan;
         BattleManager.Instance.currentCharacter = _charCont;
     }
