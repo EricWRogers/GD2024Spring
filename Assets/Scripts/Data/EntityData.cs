@@ -51,7 +51,6 @@ public class EntityData
     public UnityEvent onWasAttacked;
     public UnityEvent onJustReady;
 
-    public bool playerJustAttacked;
 
 
     [Space(15)]
@@ -107,15 +106,21 @@ public class EntityData
         entityState = EntityState.Attacking;
     }
 
-    public void Attack(AbilityData ability)
+    IEnumerator QueueAttack(AbilityData ability)
     {
-        if(entityState == EntityState.Died)
-            return;
+        if (entityState == EntityState.Died)
+        {
+            yield break;
+        }
 
+        entityState = EntityState.TryingAttack;
 
-        OnAttack.Invoke();
+        yield return new WaitUntil(()=>_target.IsAttackable);
+
 
         Debug.Log("attacked with " + ability.abilityName + "at" + _target.characterName);
+
+
 
         switch(ability.output)
         {
@@ -133,7 +138,6 @@ public class EntityData
         }
 
         entityState = EntityState.Attacking;
-
     }
 
 
@@ -182,7 +186,7 @@ public class EntityData
     {
         get
         {
-            return _target.entityState == EntityState.Idle || _target.entityState == EntityState.Ready;
+            return entityState == EntityState.Idle || entityState == EntityState.Ready;
         }
     }
 
