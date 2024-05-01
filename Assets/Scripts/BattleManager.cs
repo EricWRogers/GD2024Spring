@@ -1,16 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class BattleManager : MonoBehaviour
 {
     public EntityController currentCharacter;
 
+    public List<EntityController> friendlyCharacters = new List<EntityController>();
     public static BattleManager Instance;
 
     void Awake()
     {
         Instance = this;
+    }
+
+    private void Start()
+    {
+        friendlyCharacters = FindObjectsOfType<EntityController>().ToList().FindAll(x => x.entityData.entityGroup == EntityGroup.Friendly);
     }
 
     public void SelectCharacter(EntityData newChar)

@@ -43,6 +43,9 @@ public class EntityData
     public EntityState entityState;
     public EntityGroup entityGroup;
 
+    
+    EntityState savedState;
+
 
     [Space(10)]
 
@@ -96,7 +99,9 @@ public class EntityData
         {
             yield break;
         }
+        
 
+        _target.SaveEntityState();
         _target.entityState = EntityState.Attacked;
 
 
@@ -120,6 +125,8 @@ public class EntityData
         }
 
         entityState = EntityState.Attacking;
+
+        _charCont.ClearAttackQueue();
     }
 
 
@@ -149,9 +156,6 @@ public class EntityData
             entUI.UpdateHealthBar(curHealth, maxHealth);
         }
 
-
-
-        curHealth -= damageAmount;
         onWasAttacked.Invoke();
     }
 
@@ -190,13 +194,18 @@ public class EntityData
     }
     void  EntityAttackDefault()
     {
-        curSpeed = 0;
+       
 
     }
 
     void EntityAttackedDefault()
     {
         Debug.Log(characterName + " was attacked");
+        if(entityState != EntityState.Died)
+        {
+            entityState = savedState;
+        }
+        
     }
 
     void OnReadyDefault()
@@ -229,6 +238,11 @@ public class EntityData
         
         entUI.physicUI.entityUI.color = Color.cyan;
         BattleManager.Instance.currentCharacter = _charCont;
+    }
+
+    public void SaveEntityState()
+    {
+        savedState = entityState;
     }
 
     public void ResetUINameText()
