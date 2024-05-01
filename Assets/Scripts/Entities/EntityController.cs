@@ -10,6 +10,8 @@ public class EntityController : MonoBehaviour
 
     public Coroutine attackQueue = null;
 
+    public Coroutine enemyAttackBehaviour;
+
     public Sprite sprite;
 
     private void Awake()
@@ -19,9 +21,15 @@ public class EntityController : MonoBehaviour
     private void Start()
     {
         entityData.Init();
-        entityData._target = targetData.entityData;
+
+        if(entityData.entityGroup == EntityGroup.Friendly)
+        {
+            entityData._target = targetData.entityData;
+        }
+
 
         StartCoroutine(entityData.EntityLoop());
+        enemyAttackBehaviour = StartCoroutine(AttackRandomFriendlyCharacter());
     }
 
     public void ClearAttackQueue()
@@ -36,10 +44,23 @@ public class EntityController : MonoBehaviour
 
    
 
-    /*private void Update()
+    public IEnumerator AttackRandomFriendlyCharacter()
     {
+        if (entityData.entityGroup == EntityGroup.Enemy)
+        {
+            while (entityData.IsAlive)
+            {
+                yield return new WaitUntil(()=> entityData.ActionReady);
 
-        
-    }*/
+                entityData._target = BattleManager.Instance.RandomFriendlyCharacter.entityData;
+
+                yield return entityData.QueueAttack(entityData.basicAttack);
+                
+                
+                yield return null;
+
+            }
+        }
+    }
 
 }

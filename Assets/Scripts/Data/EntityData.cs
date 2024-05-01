@@ -83,7 +83,7 @@ public class EntityData
 
     public IEnumerator QueueAttack(AbilityData ability)
     {
-        if (entityState == EntityState.Died || entityState == EntityState.TryingAttack)
+        if (!IsAlive || entityState == EntityState.TryingAttack)
         {
             _charCont.ClearAttackQueue();
             yield break;
@@ -95,7 +95,7 @@ public class EntityData
 
         yield return new WaitUntil(()=>_target.IsAttackable);
 
-        if(_target.entityState == EntityState.Died)
+        if(!_target.IsAlive)
         {
             yield break;
         }
@@ -105,7 +105,7 @@ public class EntityData
         _target.entityState = EntityState.Attacked;
 
 
-        Debug.Log("attacked with " + ability.abilityName + "at" + _target.characterName);
+        Debug.Log(" attacked with " + ability.abilityName + " at " + _target.characterName);
 
 
 
@@ -183,6 +183,14 @@ public class EntityData
             return curSpeed >= speedLimit;
         }
         
+    }
+
+    public bool IsAlive
+    {
+        get 
+        {
+            return entityState != EntityState.Died;
+        }
     }
 
     void IncreaseOC(int amount)

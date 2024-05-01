@@ -46,4 +46,12 @@ public class BattleManager : MonoBehaviour
             }
         }
     }
+
+    public EntityController RandomFriendlyCharacter
+    {
+        get
+        {
+            return friendlyCharacters[Random.Range(0, friendlyCharacters.Count -1)];
+        }
+    }
 }
