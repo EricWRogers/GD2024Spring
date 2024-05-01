@@ -51,7 +51,7 @@ public class BattleManager : MonoBehaviour
     {
         get
         {
-            return friendlyCharacters[Random.Range(0, friendlyCharacters.Count -1)];
+            return friendlyCharacters[Random.Range(0, friendlyCharacters.Count)];
         }
     }
 }
