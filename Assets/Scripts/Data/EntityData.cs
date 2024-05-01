@@ -72,50 +72,32 @@ public class EntityData
 
         OnAttack.AddListener(EntityAttackDefault);
         onWasAttacked.AddListener(EntityAttackedDefault);
+        OnAttackQueue.AddListener(OnAttackQueueDefault);
 
         entityState = EntityState.Idle;
     }
 
-    IEnumerator QueueAttack(AbilityData ability)
+
+    public IEnumerator QueueAttack(AbilityData ability)
     {
-        if (entityState == EntityState.Died)
-            yield break;
-
-        yield return new WaitUntil(() => _target.IsAttackable);
-
-        entityState = EntityState.TryingAttack;
-
-
-        Debug.Log("attacked with " + ability.abilityName + "at" + _target.characterName);
-
-        switch (ability.output)
+        if (entityState == EntityState.Died || entityState == EntityState.TryingAttack)
         {
-            case AbilityOutput.Damage:
-                _target.Damage(ability.abValue);
-                break;
-            case AbilityOutput.Heal:
-                _target.Heal(ability.abValue);
-                break;
-        }
-
-        if (entityGroup == EntityGroup.Friendly)
-        {
-            IncreaseOC(5);
-        }
-
-        entityState = EntityState.Attacking;
-    }
-
-    IEnumerator QueueAttack(AbilityData ability)
-    {
-        if (entityState == EntityState.Died)
-        {
+            _charCont.ClearAttackQueue();
             yield break;
         }
 
         entityState = EntityState.TryingAttack;
+
+        OnAttackQueue.Invoke();
 
         yield return new WaitUntil(()=>_target.IsAttackable);
+
+        if(_target.entityState == EntityState.Died)
+        {
+            yield break;
+        }
+
+        _target.entityState = EntityState.Attacked;
 
 
         Debug.Log("attacked with " + ability.abilityName + "at" + _target.characterName);
@@ -220,6 +202,11 @@ public class EntityData
     void OnReadyDefault()
     {
         SelectCharacter();
+    }
+
+    void OnAttackQueueDefault()
+    {
+        curSpeed = 0;
     }
 
     public void SelectCharacter()

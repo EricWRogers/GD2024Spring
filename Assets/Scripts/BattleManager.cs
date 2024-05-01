@@ -20,6 +20,7 @@ public class BattleManager : MonoBehaviour
 
     public void DoBasicAttackOnTarget()
     {
+        var charData = currentCharacter.entityData;
         if (currentCharacter.entityData.ActionReady)
         {
             Debug.Log("Ready to attack");
@@ -28,7 +29,11 @@ public class BattleManager : MonoBehaviour
                 Debug.Log("Player did an action");
                 if (currentCharacter.entityData._target.CanBeAttacked)
                 {
-                   currentCharacter.entityData.Attack(currentCharacter.entityData.basicAttack);
+                    if(currentCharacter.attackQueue == null)
+                    {
+                        currentCharacter.attackQueue = StartCoroutine(currentCharacter.entityData.QueueAttack(currentCharacter.entityData.basicAttack));
+                    }
+                   
                 }
 
             }

@@ -8,7 +8,7 @@ public class EntityController : MonoBehaviour
     public EntityData entityData;
     public EntityController targetData;
 
-    public Coroutine attackQueue;
+    public Coroutine attackQueue = null;
 
     public Sprite sprite;
 
@@ -22,6 +22,16 @@ public class EntityController : MonoBehaviour
         entityData._target = targetData.entityData;
 
         StartCoroutine(entityData.EntityLoop());
+    }
+
+    public void ClearAttackQueue()
+    {
+        if (attackQueue != null)
+        {
+            StopCoroutine((attackQueue));
+            attackQueue = null;
+        }
+    
     }
 
    
