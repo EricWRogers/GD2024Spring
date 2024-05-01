@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using TMPro;
 using UnityEngine.UI;
+using UnityEditor.Playables;
 
 [System.Serializable]
 public class EntityData
@@ -46,6 +47,7 @@ public class EntityData
     [Space(10)]
 
     public UnityEvent OnAttack;
+    public UnityEvent OnAttackQueue;
     public UnityEvent onWasAttacked;
     public UnityEvent onJustReady;
 
@@ -73,6 +75,36 @@ public class EntityData
         onWasAttacked.AddListener(EntityAttackedDefault);
 
         entityState = EntityState.Idle;
+    }
+
+    IEnumerator QueueAttack(AbilityData ability)
+    {
+        if (entityState == EntityState.Died)
+            yield break;
+
+        yield return new WaitUntil(() => _target.IsAttackable);
+
+        entityState = EntityState.TryingAttack;
+
+
+        Debug.Log("attacked with " + ability.abilityName + "at" + _target.characterName);
+
+        switch (ability.output)
+        {
+            case AbilityOutput.Damage:
+                _target.Damage(ability.abValue);
+                break;
+            case AbilityOutput.Heal:
+                _target.Heal(ability.abValue);
+                break;
+        }
+
+        if (entityGroup == EntityGroup.Friendly)
+        {
+            IncreaseOC(5);
+        }
+
+        entityState = EntityState.Attacking;
     }
 
     public void Attack(AbilityData ability)
@@ -146,7 +178,7 @@ public class EntityData
         
     }
 
-    public bool CanAttackTarget
+    public bool IsAttackable
     {
         get
         {
@@ -172,7 +204,6 @@ public class EntityData
     }
     void  EntityAttackDefault()
     {
-        playerJustAttacked = false;
         curSpeed = 0;
 
     }
@@ -223,6 +254,8 @@ public class EntityData
         {
             while (curSpeed < speedLimit)
             {
+                yield return new WaitUntil(() => entityState != EntityState.TryingAttack);
+       
                 curSpeed += Time.deltaTime;
 
                 if (entityGroup == EntityGroup.Friendly)
@@ -340,6 +373,7 @@ public enum EntityState
     Ready,
     Attacked,
     Attacking,
-    Died
+    Died,
+    TryingAttack
 }
 
