@@ -8,6 +8,10 @@ public class BattleManager : MonoBehaviour
     public EntityController currentCharacter;
 
     public List<EntityController> friendlyCharacters = new List<EntityController>();
+
+    List<EntityController> enemyCharacters = new List<EntityController>();
+
+    public AudioSource victorySound;
     public static BattleManager Instance;
 
     void Awake()
@@ -17,7 +21,9 @@ public class BattleManager : MonoBehaviour
 
     private void Start()
     {
+        victorySound = GetComponent<AudioSource>();
         friendlyCharacters = FindObjectsOfType<EntityController>().ToList().FindAll(x => x.entityData.entityGroup == EntityGroup.Friendly);
+        enemyCharacters = FindObjectsOfType<EntityController>().ToList().FindAll(x => x.entityData.entityGroup == EntityGroup.Enemy);
     }
 
     public void SelectCharacter(EntityData newChar)
@@ -52,6 +58,54 @@ public class BattleManager : MonoBehaviour
         get
         {
             return friendlyCharacters[Random.Range(0, friendlyCharacters.Count)];
+        }
+    }
+
+    public void CheckMatchStatus()
+    {
+        if (FriendlyCharacterAlive && !EnemyCharacterAlive)
+        {
+            Debug.Log("Victory!");
+            victorySound.Play();
+        }
+
+    }
+
+    bool FriendlyCharacterAlive
+    {
+        get
+        {
+            bool friendlyAlive = false;
+
+            for (int i = 0; i < friendlyCharacters.Count; i++)
+            {
+                if (friendlyCharacters[i].entityData.IsAlive)
+                {
+                    friendlyAlive = true;
+                }
+            }
+
+            return friendlyAlive;
+        }
+    }
+
+    
+
+    bool EnemyCharacterAlive
+    {
+        get
+        {
+            bool enemyAlive = false;
+
+            for (int i = 0; i < enemyCharacters.Count; i++)
+            {
+                if (friendlyCharacters[i].entityData.IsAlive)
+                {
+                    enemyAlive = true;
+                }
+            }
+
+            return enemyAlive;
         }
     }
 }
