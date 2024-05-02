@@ -2834,7 +2834,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
     _charCont: {fileID: 0}
-  targetData: {fileID: 138344239}
+  targetData: {fileID: 1490266148}
   sprite: {fileID: 0}
 --- !u!4 &1189796742
 Transform:
@@ -3235,7 +3235,7 @@ MonoBehaviour:
     characterName: Enemy
     basicAttack:
       abilityName: Sting
-      abValue: 10
+      abValue: 50
       energyCost: 1
       type: 1
       output: 0

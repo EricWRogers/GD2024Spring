@@ -40,7 +40,7 @@ public class BattleManager : MonoBehaviour
             if (currentCharacter.entityData.entityGroup == EntityGroup.Friendly)
             {
                 Debug.Log("Player did an action");
-                if (currentCharacter.entityData._target.CanBeAttacked)
+                if (currentCharacter.entityData._target.IsAttackable)
                 {
                     if(currentCharacter.attackQueue == null)
                     {
@@ -68,19 +68,36 @@ public class BattleManager : MonoBehaviour
         if (FriendlyCharacterAlive && !EnemyCharacterAlive)
         {
             Debug.Log("Victory!");
+
+            StopAllCharacters();
             
         }
 
         if (!FriendlyCharacterAlive && EnemyCharacterAlive)
         {
-            Debug.Log("Womp Wop");
+            Debug.Log("Womp Womp");
+            StopAllCharacters();
             
         }
 
 
     }
 
-    bool FriendlyCharacterAlive
+    void StopAllCharacters()
+    {
+
+        for (int i = 0; i < friendlyCharacters.Count; i++)
+        {
+            friendlyCharacters[i].StopAll();
+        }
+
+        for (int i = 0; i < enemyCharacters.Count; i++)
+        {
+            enemyCharacters[i].StopAll();
+        } 
+    }
+
+    public bool FriendlyCharacterAlive
     {
         get
         {
@@ -108,7 +125,7 @@ public class BattleManager : MonoBehaviour
 
             for (int i = 0; i < enemyCharacters.Count; i++)
             {
-                if (friendlyCharacters[i].entityData.IsAlive)
+                if (enemyCharacters[i].entityData.IsAlive)
                 {
                     enemyAlive = true;
                 }

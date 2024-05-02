@@ -54,6 +54,8 @@ public class EntityData
     public UnityEvent onWasAttacked;
     public UnityEvent onJustReady;
 
+    UnityEvent onCharacterDied = new UnityEvent();
+
 
 
     [Space(15)]
@@ -76,6 +78,7 @@ public class EntityData
         OnAttack.AddListener(EntityAttackDefault);
         onWasAttacked.AddListener(EntityAttackedDefault);
         OnAttackQueue.AddListener(OnAttackQueueDefault);
+        onCharacterDied.AddListener(OnDeathDefault);
 
         entityState = EntityState.Idle;
     }
@@ -83,7 +86,7 @@ public class EntityData
 
     public IEnumerator QueueAttack(AbilityData ability)
     {
-        if (!IsAlive || entityState == EntityState.TryingAttack)
+        if (!IsAlive || entityState == EntityState.TryingAttack || entityState == EntityState.Finish)
         {
             _charCont.ClearAttackQueue();
             yield break;
@@ -99,6 +102,8 @@ public class EntityData
         {
             yield break;
         }
+
+        entityState = EntityState.Attacking;
         
 
         _target.SaveEntityState();
@@ -124,7 +129,7 @@ public class EntityData
             IncreaseOC(5);
         }
 
-        entityState = EntityState.Attacking;
+        
 
         _charCont.ClearAttackQueue();
     }
@@ -148,6 +153,7 @@ public class EntityData
         {
             curHealth = 0;
             entityState = EntityState.Died;
+            onCharacterDied.Invoke();
         }
         //OVERCHARGEEEEE
         if (entityGroup == EntityGroup.Friendly)
@@ -159,14 +165,6 @@ public class EntityData
         onWasAttacked.Invoke();
     }
 
-    public bool CanBeAttacked
-    {
-        get
-        {
-            return entityState == EntityState.Idle || entityState == EntityState.Ready;
-        }
-        
-    }
 
     public bool IsAttackable
     {
@@ -226,6 +224,12 @@ public class EntityData
         curSpeed = 0;
     }
 
+    void OnDeathDefault()
+    {
+        BattleManager.Instance.CheckMatchStatus();
+        entityState = EntityState.Died;
+    }
+
     public void SelectCharacter()
     {
         if (!ActionReady)
@@ -274,7 +278,7 @@ public class EntityData
                     entUI.UpdateTimeBar(curSpeed);
                 }
 
-                if(entityState == EntityState.Attacked)
+                if(entityState == EntityState.Attacked || entityState != EntityState.Died)
                 {
                     entityState = EntityState.Idle;
                 }
@@ -288,7 +292,12 @@ public class EntityData
             onJustReady.Invoke();
             yield return new WaitUntil(()=> entityState == EntityState.Attacking);
 
-            entityState = EntityState.Idle;
+            if(entityState != EntityState.Died)
+            {
+                entityState = EntityState.Idle;
+            }
+
+            
 
             yield return new WaitUntil(()=> entityState == EntityState.Idle);
 
@@ -385,6 +394,7 @@ public enum EntityState
     Attacked,
     Attacking,
     Died,
-    TryingAttack
+    TryingAttack,
+    Finish
 }
 

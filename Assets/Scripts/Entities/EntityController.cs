@@ -48,18 +48,29 @@ public class EntityController : MonoBehaviour
     {
         if (entityData.entityGroup == EntityGroup.Enemy)
         {
-            while (entityData.IsAlive)
+
+            while (entityData.IsAlive) 
             {
-                yield return new WaitUntil(()=> entityData.ActionReady);
-
-                entityData._target = BattleManager.Instance.RandomFriendlyCharacter.entityData;
-
-                yield return entityData.QueueAttack(entityData.basicAttack);
+                yield return new WaitUntil(() => entityData.ActionReady);
+                while(entityData._target == null || entityData._target.entityState == EntityState.Died)
+                {
+                    if(BattleManager.Instance.FriendlyCharacterAlive)
+                    {
+                        entityData._target = BattleManager.Instance.RandomFriendlyCharacter.entityData;
+                        yield return null;
+                    }
+                    else
+                    {
+                    yield break;
+                    }
+                    yield return null;
+                }
                 
-                
-                yield return null;
+                yield return entityData.QueueAttack(entityData.basicAttack);   
 
-            }
+
+                yield return null; 
+            }   
         }
     }
 
@@ -81,6 +92,9 @@ public class EntityController : MonoBehaviour
         }
 
         characterBaseLoop = null;
+        attackQueue = null;
+        enemyAttackBehaviour = null;
+        entityData.entityState = EntityState.Finish;
     }
 
 }
