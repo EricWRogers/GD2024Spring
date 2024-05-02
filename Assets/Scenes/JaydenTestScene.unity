@@ -306,7 +306,7 @@ MonoBehaviour:
     characterName: R_01
     basicAttack:
       abilityName: Rocket Punch
-      abValue: 10
+      abValue: 2000
       energyCost: 0
       type: 0
       output: 0

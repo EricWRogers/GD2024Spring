@@ -10,6 +10,8 @@ public class PlayerData : MonoBehaviour
     const float baseThreshold = 1;
     public float currentThreshold = baseThreshold;
 
+    public Sprite sprite;
+
     // Update is called once per frame
     void Update()
     {
