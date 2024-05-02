@@ -10,7 +10,6 @@ public class PlayerData : MonoBehaviour
     const float baseThreshold = 1;
     public float currentThreshold = baseThreshold;
 
-    public Sprite sprite;
 
     // Update is called once per frame
     void Update()
@@ -22,9 +21,9 @@ public class PlayerData : MonoBehaviour
 
     public void RollEncounter()
     {
-        if (Physics2D.OverlapCircle(transform.position, 0.2f, EncounterLayer)!= null || Input.GetKeyDown(KeyCode.B))
+        if (Physics2D.OverlapCircle(transform.position, -0.2f, EncounterLayer)!= null || Input.GetKeyDown(KeyCode.B))
         {
-            int chance = UnityEngine.Random.Range(1, 101);
+            int chance = UnityEngine.Random.Range(1, 1001);
             if (chance < currentThreshold)
             {
                 Debug.Log("Encounter!");

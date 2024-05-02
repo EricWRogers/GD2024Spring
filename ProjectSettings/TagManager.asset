@@ -12,8 +12,8 @@ TagManager:
   - Water
   - UI
   - ColObjects
+  - ColObjects2
   - Encounter
-  - 
   - 
   - 
   - 
@@ -41,9 +41,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background
+    uniqueID: 1891945249
+    locked: 0
   - name: Player
     uniqueID: 1474019627
-    locked: 0
-  - name: New Layer 2
-    uniqueID: 1891945249
     locked: 0
