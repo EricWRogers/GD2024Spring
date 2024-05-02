@@ -12,13 +12,12 @@ public class EntityController : MonoBehaviour
     public Coroutine characterBaseLoop;
     public Coroutine enemyAttackBehaviour;
 
-    public Sprite sprite;
 
     private void Awake()
     {
         entityData._charCont = this;
     }
-    private void Start()
+    public void ControllerStart()
     {
         entityData.Init();
 

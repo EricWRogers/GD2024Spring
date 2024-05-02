@@ -18,7 +18,7 @@ public class Player_Controller : MonoBehaviour
 
 
 
-    void Update()
+    public void HandleUpdate()
     {
         if (Input.GetKeyDown(KeyCode.LeftShift)) { SprintWhyNot = 2; }
         if (Input.GetKeyUp(KeyCode.LeftShift)) { SprintWhyNot = 1; }
