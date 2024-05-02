@@ -11,7 +11,7 @@ public class BattleManager : MonoBehaviour
 
     List<EntityController> enemyCharacters = new List<EntityController>();
 
-    public AudioSource victorySound;
+    
     public static BattleManager Instance;
 
     void Awake()
@@ -21,7 +21,7 @@ public class BattleManager : MonoBehaviour
 
     private void Start()
     {
-        victorySound = GetComponent<AudioSource>();
+        
         friendlyCharacters = FindObjectsOfType<EntityController>().ToList().FindAll(x => x.entityData.entityGroup == EntityGroup.Friendly);
         enemyCharacters = FindObjectsOfType<EntityController>().ToList().FindAll(x => x.entityData.entityGroup == EntityGroup.Enemy);
     }
@@ -53,6 +53,8 @@ public class BattleManager : MonoBehaviour
         }
     }
 
+   
+
     public EntityController RandomFriendlyCharacter
     {
         get
@@ -66,8 +68,15 @@ public class BattleManager : MonoBehaviour
         if (FriendlyCharacterAlive && !EnemyCharacterAlive)
         {
             Debug.Log("Victory!");
-            victorySound.Play();
+            
         }
+
+        if (!FriendlyCharacterAlive && EnemyCharacterAlive)
+        {
+            Debug.Log("Womp Wop");
+            
+        }
+
 
     }
 

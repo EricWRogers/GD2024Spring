@@ -9,7 +9,7 @@ public class EntityController : MonoBehaviour
     public EntityController targetData;
 
     public Coroutine attackQueue = null;
-
+    public Coroutine characterBaseLoop;
     public Coroutine enemyAttackBehaviour;
 
     public Sprite sprite;
@@ -28,7 +28,7 @@ public class EntityController : MonoBehaviour
         }
 
 
-        StartCoroutine(entityData.EntityLoop());
+        characterBaseLoop = StartCoroutine(entityData.EntityLoop());
         enemyAttackBehaviour = StartCoroutine(AttackRandomFriendlyCharacter());
     }
 
@@ -61,6 +61,26 @@ public class EntityController : MonoBehaviour
 
             }
         }
+    }
+
+    public void StopAll()
+    {
+        if (characterBaseLoop != null)
+        {
+            StopCoroutine(characterBaseLoop);
+        }
+
+        if (attackQueue != null)
+        {
+            StopCoroutine(attackQueue);
+        }
+
+        if(enemyAttackBehaviour != null)
+        {
+            StopCoroutine(enemyAttackBehaviour);    
+        }
+
+        characterBaseLoop = null;
     }
 
 }
