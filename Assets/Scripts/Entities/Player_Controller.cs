@@ -14,8 +14,16 @@ public class Player_Controller : MonoBehaviour
     public LayerMask SolidObjectsLayer1;
     public LayerMask SolidObjectsLayer2;
 
-    
+    public LayerMask EncounterLayer;
+    const float baseThreshold = 1;
+    public float currentThreshold = baseThreshold;
 
+
+    
+    public void Update()
+    {
+        RollEncounter();
+    }
 
 
     public void HandleUpdate()
@@ -65,5 +73,22 @@ public class Player_Controller : MonoBehaviour
         }
         
 
+    }
+
+     public void RollEncounter()
+    {
+        if (Physics2D.OverlapCircle(transform.position, -.2f, EncounterLayer)!= null || Input.GetKeyDown(KeyCode.B))
+        {
+            int chance = UnityEngine.Random.Range(1, 101);
+            if (chance < currentThreshold)
+            {
+                Debug.Log("Encounter!");
+                currentThreshold = baseThreshold;
+            }
+            else
+            {
+                currentThreshold += 1;
+            }
+        }
     }
 }
