@@ -12,6 +12,11 @@ public class GameController : MonoBehaviour
     [SerializeField] EntityController entityController;
 
     GameState state;
+
+    private void Start()
+    {
+        playerController.OnEncountered += StartBattle;
+    }
     
     // Update is called once per frame
     void Update()

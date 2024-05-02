@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Player_Controller : MonoBehaviour
 {
@@ -17,6 +18,8 @@ public class Player_Controller : MonoBehaviour
     public LayerMask EncounterLayer;
     const float baseThreshold = 1;
     public float currentThreshold = baseThreshold;
+
+    public event Action onEncountered;
 
 
     
@@ -82,7 +85,7 @@ public class Player_Controller : MonoBehaviour
             int chance = UnityEngine.Random.Range(1, 101);
             if (chance < currentThreshold)
             {
-                Debug.Log("Encounter!");
+                onEncountered();
                 currentThreshold = baseThreshold;
             }
             else
