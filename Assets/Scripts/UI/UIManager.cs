@@ -20,6 +20,7 @@ public class UIManager : MonoBehaviour
     public OnClickGenericEvent firstOnClick;
 
     public GameObject actionWindow;
+    public GameObject abilityWindow;
 
     [Header("Ability Window")]
     public Transform abilityUIHolder;
@@ -68,6 +69,7 @@ public class UIManager : MonoBehaviour
 
             AbilityUI tmpAbUI = tmpAbilityPrefab.GetComponent<AbilityUI>();
             tmpAbUI.abilityIndex = i;
+            tmpAbUI.Init(data[i].abilityName);
         }
 
         

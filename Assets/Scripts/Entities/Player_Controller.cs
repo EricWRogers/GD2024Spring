@@ -14,6 +14,8 @@ public class Player_Controller : MonoBehaviour
     public LayerMask SolidObjectsLayer1;
     public LayerMask SolidObjectsLayer2;
 
+    
+
 
 
     void Update()

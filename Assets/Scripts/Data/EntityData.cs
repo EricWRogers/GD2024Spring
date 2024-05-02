@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using TMPro;
 using UnityEngine.UI;
+using UnityEditor.Playables;
 
 [System.Serializable]
 public class EntityData
@@ -42,14 +43,19 @@ public class EntityData
     public EntityState entityState;
     public EntityGroup entityGroup;
 
+    
+    EntityState savedState;
+
 
     [Space(10)]
 
     public UnityEvent OnAttack;
+    public UnityEvent OnAttackQueue;
     public UnityEvent onWasAttacked;
     public UnityEvent onJustReady;
 
-    public bool playerJustAttacked;
+    UnityEvent onCharacterDied = new UnityEvent();
+
 
 
     [Space(15)]
@@ -71,19 +77,42 @@ public class EntityData
 
         OnAttack.AddListener(EntityAttackDefault);
         onWasAttacked.AddListener(EntityAttackedDefault);
+        OnAttackQueue.AddListener(OnAttackQueueDefault);
+        onCharacterDied.AddListener(OnDeathDefault);
 
         entityState = EntityState.Idle;
     }
 
-    public void Attack(AbilityData ability)
+
+    public IEnumerator QueueAttack(AbilityData ability)
     {
-        if(entityState == EntityState.Died)
-            return;
+        if (!IsAlive || entityState == EntityState.TryingAttack || entityState == EntityState.Finish)
+        {
+            _charCont.ClearAttackQueue();
+            yield break;
+        }
+
+        entityState = EntityState.TryingAttack;
+
+        OnAttackQueue.Invoke();
+
+        yield return new WaitUntil(()=>_target.IsAttackable);
+
+        if(!_target.IsAlive)
+        {
+            yield break;
+        }
+
+        entityState = EntityState.Attacking;
+        
+
+        _target.SaveEntityState();
+        _target.entityState = EntityState.Attacked;
 
 
-        OnAttack.Invoke();
+        Debug.Log(" attacked with " + ability.abilityName + " at " + _target.characterName);
 
-        Debug.Log("attacked with" + ability.abilityName + "to" + _target.characterName);
+
 
         switch(ability.output)
         {
@@ -100,8 +129,9 @@ public class EntityData
             IncreaseOC(5);
         }
 
-        entityState = EntityState.Attacking;
+        
 
+        _charCont.ClearAttackQueue();
     }
 
 
@@ -123,6 +153,7 @@ public class EntityData
         {
             curHealth = 0;
             entityState = EntityState.Died;
+            onCharacterDied.Invoke();
         }
         //OVERCHARGEEEEE
         if (entityGroup == EntityGroup.Friendly)
@@ -131,26 +162,15 @@ public class EntityData
             entUI.UpdateHealthBar(curHealth, maxHealth);
         }
 
-
-
-        curHealth -= damageAmount;
         onWasAttacked.Invoke();
     }
 
-    public bool CanBeAttacked
+
+    public bool IsAttackable
     {
         get
         {
             return entityState == EntityState.Idle || entityState == EntityState.Ready;
-        }
-        
-    }
-
-    public bool CanAttackTarget
-    {
-        get
-        {
-            return _target.entityState == EntityState.Idle || _target.entityState == EntityState.Ready;
         }
     }
 
@@ -163,6 +183,14 @@ public class EntityData
         
     }
 
+    public bool IsAlive
+    {
+        get 
+        {
+            return entityState != EntityState.Died;
+        }
+    }
+
     void IncreaseOC(int amount)
     {
         curOC += amount;
@@ -172,14 +200,18 @@ public class EntityData
     }
     void  EntityAttackDefault()
     {
-        playerJustAttacked = false;
-        curSpeed = 0;
+       
 
     }
 
     void EntityAttackedDefault()
     {
         Debug.Log(characterName + " was attacked");
+        if(entityState != EntityState.Died)
+        {
+            entityState = savedState;
+        }
+        
     }
 
     void OnReadyDefault()
@@ -187,26 +219,42 @@ public class EntityData
         SelectCharacter();
     }
 
+    void OnAttackQueueDefault()
+    {
+        curSpeed = 0;
+    }
+
+    void OnDeathDefault()
+    {
+        BattleManager.Instance.CheckMatchStatus();
+        entityState = EntityState.Died;
+    }
+
     public void SelectCharacter()
     {
-
-        if(!ActionReady)
+        if (!ActionReady)
+        {
             return;
+        }
 
-        
         UIManager.Instance.actionWindow.SetActive(true);
+        UIManager.Instance.abilityWindow.SetActive(false);
 
         foreach(var item in GameObject.FindObjectsOfType<EntityController>())
         {
-            if(item.entityData.entityGroup != EntityGroup.Enemy)
+            if (item.entityData.entityGroup != EntityGroup.Enemy)
             {
-                item.entityData.ResetUINameText(); 
+                item.entityData.ResetUINameText();
             }
-           
         }
-
+        
         entUI.physicUI.entityUI.color = Color.cyan;
         BattleManager.Instance.currentCharacter = _charCont;
+    }
+
+    public void SaveEntityState()
+    {
+        savedState = entityState;
     }
 
     public void ResetUINameText()
@@ -221,6 +269,8 @@ public class EntityData
         {
             while (curSpeed < speedLimit)
             {
+                yield return new WaitUntil(() => entityState != EntityState.TryingAttack);
+       
                 curSpeed += Time.deltaTime;
 
                 if (entityGroup == EntityGroup.Friendly)
@@ -228,7 +278,7 @@ public class EntityData
                     entUI.UpdateTimeBar(curSpeed);
                 }
 
-                if(entityState == EntityState.Attacked)
+                if(entityState == EntityState.Attacked || entityState != EntityState.Died)
                 {
                     entityState = EntityState.Idle;
                 }
@@ -242,7 +292,12 @@ public class EntityData
             onJustReady.Invoke();
             yield return new WaitUntil(()=> entityState == EntityState.Attacking);
 
-            entityState = EntityState.Idle;
+            if(entityState != EntityState.Died)
+            {
+                entityState = EntityState.Idle;
+            }
+
+            
 
             yield return new WaitUntil(()=> entityState == EntityState.Idle);
 
@@ -338,6 +393,8 @@ public enum EntityState
     Ready,
     Attacked,
     Attacking,
-    Died
+    Died,
+    TryingAttack,
+    Finish
 }
 
