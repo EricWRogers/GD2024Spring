@@ -9,6 +9,9 @@ public class playerMovement : MonoBehaviour
     public Animator animator;
     public Rigidbody2D rb;
 
+    public GameObject horGun;
+    public GameObject vertGun;
+
     Vector2 movement;
 
     void Update()
@@ -33,6 +36,18 @@ public class playerMovement : MonoBehaviour
         if (movement.x < 0)
         {
             gameObject.transform.localScale = new Vector2(1, 1);
+        }
+
+        if (animator.GetFloat("Horizontal") != 0)
+        {
+            vertGun.SetActive(false);
+            horGun.SetActive(true);
+        }
+
+        if (animator.GetFloat("Vertical") != 0)
+        {
+            horGun.SetActive(false);
+            vertGun.SetActive(true);
         }
     }
 }
