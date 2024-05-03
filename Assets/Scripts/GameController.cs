@@ -7,15 +7,24 @@ public enum GameState {FreeRoam, Battle}
 public class GameController : MonoBehaviour
 {
 
-    [SerializeField] Player_Controller playerController;
-    [SerializeField] BattleManager battleManager;
-    [SerializeField] EntityController entityController;
+    [SerializeField] public Player_Controller playerController;
+    [SerializeField] public BattleManager battleManager;
+    [SerializeField] public Camera worldCamera;
+    
 
-    GameState state;
+   public GameState state;
 
     private void Start()
     {
-        playerController.OnEncountered += StartBattle;
+        playerController.onEncountered += StartBattle;
+    }
+
+    void StartBattle()
+    {
+        state = GameState.Battle;
+        battleManager.gameObject.SetActive(true);
+        worldCamera.gameObject.SetActive(false);
+
     }
     
     // Update is called once per frame
@@ -28,7 +37,7 @@ public class GameController : MonoBehaviour
         else if (state == GameState.Battle)
         {
             battleManager.StartBattle();
-            entityController.ControllerStart();
+            
         }
     }
 }

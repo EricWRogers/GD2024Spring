@@ -13,11 +13,12 @@ public class EntityController : MonoBehaviour
     public Coroutine enemyAttackBehaviour;
 
 
+
     private void Awake()
     {
         entityData._charCont = this;
     }
-    public void ControllerStart()
+    private void Start()
     {
         entityData.Init();
 

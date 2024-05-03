@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.SceneManagement;
+
 
 
 
@@ -16,6 +18,8 @@ public class BattleManager : MonoBehaviour
 
     
     public static BattleManager Instance;
+
+    public GameController gameController;
 
     
 
@@ -73,8 +77,14 @@ public class BattleManager : MonoBehaviour
         if (FriendlyCharacterAlive && !EnemyCharacterAlive)
         {
             Debug.Log("Victory!");
-
             StopAllCharacters();
+            
+            gameController.state = GameState.FreeRoam;
+            gameController.battleManager.gameObject.SetActive(false);
+            gameController.worldCamera.gameObject.SetActive(true);
+    
+
+
             
         }
 
@@ -82,6 +92,11 @@ public class BattleManager : MonoBehaviour
         {
             Debug.Log("Womp Womp");
             StopAllCharacters();
+            gameController.state = GameState.FreeRoam;
+            gameController.battleManager.gameObject.SetActive(false);
+            gameController.worldCamera.gameObject.SetActive(true);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            
             
         }
 
