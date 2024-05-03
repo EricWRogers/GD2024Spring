@@ -46,6 +46,14 @@ public class playerMovement : MonoBehaviour
 
         if (animator.GetFloat("Vertical") != 0)
         {
+            if(animator.GetFloat("Vertical") < 0)
+            {
+                vertGun.GetComponent<Transform>().rotation = Quaternion.Euler(180,0,0);
+            }
+            if (animator.GetFloat("Vertical") > 0)
+            {
+                vertGun.GetComponent<Transform>().rotation = Quaternion.Euler(0, 0, 0);
+            }
             horGun.SetActive(false);
             vertGun.SetActive(true);
         }
