@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using UnityEngine.SceneManagement;
+using System;
 
 
 
@@ -20,6 +21,9 @@ public class BattleManager : MonoBehaviour
     public static BattleManager Instance;
 
     public GameController gameController;
+    public Player_Controller playerController;
+
+    public event Action onBattleOver;
 
     
 
@@ -68,7 +72,7 @@ public class BattleManager : MonoBehaviour
     {
         get
         {
-            return friendlyCharacters[Random.Range(0, friendlyCharacters.Count)];
+            return friendlyCharacters[UnityEngine.Random.Range(0, friendlyCharacters.Count)];
         }
     }
 
@@ -77,25 +81,18 @@ public class BattleManager : MonoBehaviour
         if (FriendlyCharacterAlive && !EnemyCharacterAlive)
         {
             Debug.Log("Victory!");
+            onBattleOver();
             StopAllCharacters();
             
-            gameController.state = GameState.FreeRoam;
-            gameController.battleManager.gameObject.SetActive(false);
-            gameController.worldCamera.gameObject.SetActive(true);
-    
-
 
             
         }
 
-        if (!FriendlyCharacterAlive && EnemyCharacterAlive)
+        else if (!FriendlyCharacterAlive && EnemyCharacterAlive)
         {
             Debug.Log("Womp Womp");
             StopAllCharacters();
-            gameController.state = GameState.FreeRoam;
-            gameController.battleManager.gameObject.SetActive(false);
-            gameController.worldCamera.gameObject.SetActive(true);
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            onBattleOver();
             
             
         }

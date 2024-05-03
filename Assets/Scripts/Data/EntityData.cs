@@ -227,6 +227,7 @@ public class EntityData
     void OnDeathDefault()
     {
         BattleManager.Instance.CheckMatchStatus();
+        
         entityState = EntityState.Died;
     }
 

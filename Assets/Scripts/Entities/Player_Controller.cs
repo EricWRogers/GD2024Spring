@@ -20,6 +20,7 @@ public class Player_Controller : MonoBehaviour
     public float currentThreshold = baseThreshold;
 
     public event Action onEncountered;
+    
 
 
     
