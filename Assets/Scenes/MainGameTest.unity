@@ -543,6 +543,54 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 05913eb8116bd4d45923357771442708, type: 3}
+--- !u!1 &227881513
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 227881516}
+  - component: {fileID: 227881515}
+  m_Layer: 0
+  m_Name: GameController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &227881515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 227881513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c19da364d2e46654ba8cfc44126a999f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerController: {fileID: 1643963885}
+  battleManager: {fileID: 1281212239}
+  worldCamera: {fileID: 1272250466}
+  state: 0
+--- !u!4 &227881516
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 227881513}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -532.9899, y: -126.05584, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &247046119
 GameObject:
   m_ObjectHideFlags: 0
@@ -8264,7 +8312,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1281212232}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
@@ -8282,7 +8330,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -532.9899, y: -126.05584}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1281212234
@@ -8400,7 +8448,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentCharacter: {fileID: 0}
   friendlyCharacters: []
-  gameController: {fileID: 1915271412}
+  gameController: {fileID: 227881515}
   playerController: {fileID: 1643963885}
 --- !u!1 &1327377071
 GameObject:
@@ -8934,7 +8982,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1281212239}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: BattleManager, Assembly-CSharp
         m_MethodName: DoBasicAttackOnTarget
         m_Mode: 1
@@ -9140,11 +9188,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5533026469660752933, guid: c4687203064a1e24a98a3985d9bb17e7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 126.835
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5533026469660752933, guid: c4687203064a1e24a98a3985d9bb17e7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 134.301
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5533026469660752933, guid: c4687203064a1e24a98a3985d9bb17e7, type: 3}
       propertyPath: m_LocalPosition.z
@@ -12539,7 +12587,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1915271411}
   - component: {fileID: 1915271409}
-  - component: {fileID: 1915271412}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -12585,22 +12632,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1915271412
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1915271408}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c19da364d2e46654ba8cfc44126a999f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerController: {fileID: 1643963885}
-  battleManager: {fileID: 1281212239}
-  worldCamera: {fileID: 1272250466}
-  state: 0
 --- !u!1 &1958642496
 GameObject:
   m_ObjectHideFlags: 0
@@ -13207,6 +13238,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 247046121}
-  - {fileID: 1281212233}
   - {fileID: 365797962}
   - {fileID: 1915271411}
+  - {fileID: 227881516}
+  - {fileID: 1281212233}
