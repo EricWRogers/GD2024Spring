@@ -23,7 +23,7 @@ public class BattleManager : MonoBehaviour
     public GameController gameController;
     public Player_Controller playerController;
 
-    public event Action onBattleOver;
+    public event Action<bool> onBattleOver;
 
     
 
@@ -81,7 +81,7 @@ public class BattleManager : MonoBehaviour
         if (FriendlyCharacterAlive && !EnemyCharacterAlive)
         {
             Debug.Log("Victory!");
-            onBattleOver();
+            onBattleOver(true);
             StopAllCharacters();
             
 
@@ -92,7 +92,7 @@ public class BattleManager : MonoBehaviour
         {
             Debug.Log("Womp Womp");
             StopAllCharacters();
-            onBattleOver();
+            onBattleOver(true);
             
             
         }
