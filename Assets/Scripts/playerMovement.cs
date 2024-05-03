@@ -48,11 +48,11 @@ public class playerMovement : MonoBehaviour
         {
             if(animator.GetFloat("Vertical") < 0)
             {
-                vertGun.GetComponent<SpriteRenderer>().flipY = true;
+                vertGun.GetComponent<Transform>().rotation = Quaternion.Euler(180,0,0);
             }
             if (animator.GetFloat("Vertical") > 0)
             {
-                vertGun.GetComponent<SpriteRenderer>().flipY = false;
+                vertGun.GetComponent<Transform>().rotation = Quaternion.Euler(0, 0, 0);
             }
             horGun.SetActive(false);
             vertGun.SetActive(true);
