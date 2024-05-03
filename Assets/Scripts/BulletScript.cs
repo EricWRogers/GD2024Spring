@@ -5,9 +5,14 @@ using UnityEngine;
 public class BulletScript : MonoBehaviour
 {
     int damage;
+    Rigidbody2D rb;
+    private void Awake()
+    {
+    }
     void Start()
     {
-       damage = GameObject.FindWithTag("Gun").GetComponent<Shoot>().damage;
+        rb = GetComponent<Rigidbody2D>();
+        damage = GameObject.FindWithTag("Gun").GetComponent<Shoot>().damage;
     }
 
     void Update()

@@ -46,6 +46,14 @@ public class playerMovement : MonoBehaviour
 
         if (animator.GetFloat("Vertical") != 0)
         {
+            if(animator.GetFloat("Vertical") < 0)
+            {
+                vertGun.GetComponent<SpriteRenderer>().flipY = true;
+            }
+            if (animator.GetFloat("Vertical") > 0)
+            {
+                vertGun.GetComponent<SpriteRenderer>().flipY = false;
+            }
             horGun.SetActive(false);
             vertGun.SetActive(true);
         }
