@@ -154,6 +154,7 @@ public class EntityData
             curHealth = 0;
             entityState = EntityState.Died;
             onCharacterDied.Invoke();
+            
         }
         //OVERCHARGEEEEE
         if (entityGroup == EntityGroup.Friendly)
@@ -227,7 +228,6 @@ public class EntityData
     void OnDeathDefault()
     {
         BattleManager.Instance.CheckMatchStatus();
-        
         entityState = EntityState.Died;
     }
 

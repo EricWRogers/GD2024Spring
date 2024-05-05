@@ -16,14 +16,16 @@ public class Player_Controller : MonoBehaviour
     public LayerMask SolidObjectsLayer2;
 
     public LayerMask EncounterLayer;
-    const float baseThreshold = 1;
-    public float currentThreshold = baseThreshold;
 
     public event Action onEncountered;
-    
 
+    bool isOnCooldown;
 
-    
+    private void Start()
+    {
+        isOnCooldown = false;
+    }
+
     public void Update()
     {
         RollEncounter();
@@ -47,20 +49,20 @@ public class Player_Controller : MonoBehaviour
                 var targetpos = transform.position;
                 targetpos.x += input.x;
                 targetpos.y += input.y;
-                
+
                 if (!IsAWall(targetpos))
                 {
                     StartCoroutine(Move(targetpos));
                 }
-                
+
             }
-            
+
         }
         IEnumerator Move(Vector3 targetpos)
         {
             isMoving = true;
             while ((targetpos - transform.position).sqrMagnitude > Mathf.Epsilon)
-            {       
+            {
                 transform.position = Vector3.MoveTowards(transform.position, targetpos, moveSpeed * SprintWhyNot * Time.deltaTime);
                 yield return null;
             }
@@ -69,30 +71,33 @@ public class Player_Controller : MonoBehaviour
         }
         bool IsAWall(Vector2 targetpos)
         {
-            if (Physics2D.OverlapCircle(targetpos, collisionRadius, SolidObjectsLayer1) != null | Physics2D.OverlapCircle(targetpos, collisionRadius, SolidObjectsLayer2) != null) 
+            if (Physics2D.OverlapCircle(targetpos, collisionRadius, SolidObjectsLayer1) != null | Physics2D.OverlapCircle(targetpos, collisionRadius, SolidObjectsLayer2) != null)
             {
                 return true;
             }
             return false;
         }
-        
+
 
     }
 
-     public void RollEncounter()
+    public void RollEncounter()
     {
-        if (Physics2D.OverlapCircle(transform.position, -.2f, EncounterLayer)!= null || Input.GetKeyDown(KeyCode.B))
+        if (!isOnCooldown && Physics2D.OverlapCircle(transform.position, 0.2f, EncounterLayer) != null)
         {
-            int chance = UnityEngine.Random.Range(1, 101);
-            if (chance < currentThreshold)
+            if (UnityEngine.Random.Range(1, 101) <= 10)
             {
+                Debug.Log("Encounter!");
                 onEncountered();
-                currentThreshold = baseThreshold;
-            }
-            else
-            {
-                currentThreshold += 1;
+                StartCoroutine(EncounterCooldown());
             }
         }
+    }
+
+    IEnumerator EncounterCooldown()
+    {
+        isOnCooldown = true;
+        yield return new WaitForSeconds(5f); 
+        isOnCooldown = false;
     }
 }

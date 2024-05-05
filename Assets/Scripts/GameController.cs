@@ -17,7 +17,7 @@ public class GameController : MonoBehaviour
     private void Start()
     {
         playerController.onEncountered += StartBattle;
-        battleManager.onBattleOver += EndBattle;
+        battleManager.OnBattleOver += EndBattle;
     }
 
     void StartBattle()
@@ -25,15 +25,13 @@ public class GameController : MonoBehaviour
         state = GameState.Battle;
         battleManager.gameObject.SetActive(true);
         worldCamera.gameObject.SetActive(false);
-
     }
 
     void EndBattle(bool won)
     {
         state = GameState.FreeRoam; 
-    
-        worldCamera.gameObject.SetActive(true);
         battleManager.gameObject.SetActive(false);
+        worldCamera.gameObject.SetActive(true);
         
     }
 
@@ -46,9 +44,9 @@ public class GameController : MonoBehaviour
         {
             playerController.HandleUpdate();
         }
-        else if (state == GameState.Battle)
+        else if(state == GameState.Battle)
         {
-            battleManager.StartBattle();
+            battleManager.HandleUpdate();
         }
     }
 }

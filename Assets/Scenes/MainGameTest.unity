@@ -8312,7 +8312,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1281212232}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
@@ -8330,7 +8330,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -532.9899, y: -126.05584}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1281212234
@@ -8982,7 +8982,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1281212239}
         m_TargetAssemblyTypeName: BattleManager, Assembly-CSharp
         m_MethodName: DoBasicAttackOnTarget
         m_Mode: 1
@@ -9073,7 +9073,6 @@ MonoBehaviour:
   EncounterLayer:
     serializedVersion: 2
     m_Bits: 256
-  currentThreshold: 1
 --- !u!212 &1643963887
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9135,7 +9134,7 @@ Transform:
   m_GameObject: {fileID: 1643963884}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 31.2, y: 10.507004, z: 0}
+  m_LocalPosition: {x: 32, y: 10.55, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -12322,7 +12321,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 101
+  far clip plane: 130
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -12350,7 +12349,7 @@ Transform:
   m_GameObject: {fileID: 1846699038}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -880.9109}
+  m_LocalPosition: {x: 0, y: 0, z: -875}
   m_LocalScale: {x: 8.809109, y: 8.809109, z: 8.809109}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -13160,6 +13159,10 @@ PrefabInstance:
       propertyPath: targetData
       value: 
       objectReference: {fileID: 1912970756}
+    - target: {fileID: 4304358049341557265, guid: 4583aabe8688382448826ede31de53cb, type: 3}
+      propertyPath: entityData.basicAttack.abValue
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 4304358049341557265, guid: 4583aabe8688382448826ede31de53cb, type: 3}
       propertyPath: entityData.entityAbilities.Array.data[1].output
       value: 0

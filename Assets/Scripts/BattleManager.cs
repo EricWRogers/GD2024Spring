@@ -23,7 +23,7 @@ public class BattleManager : MonoBehaviour
     public GameController gameController;
     public Player_Controller playerController;
 
-    public event Action<bool> onBattleOver;
+    public event Action<bool> OnBattleOver;
 
     
 
@@ -32,7 +32,7 @@ public class BattleManager : MonoBehaviour
         Instance = this;
     }
 
-    public void StartBattle()
+    public void HandleUpdate()
     {
         
         friendlyCharacters = FindObjectsOfType<EntityController>().ToList().FindAll(x => x.entityData.entityGroup == EntityGroup.Friendly);
@@ -66,6 +66,7 @@ public class BattleManager : MonoBehaviour
         }
     }
 
+
    
 
     public EntityController RandomFriendlyCharacter
@@ -81,8 +82,8 @@ public class BattleManager : MonoBehaviour
         if (FriendlyCharacterAlive && !EnemyCharacterAlive)
         {
             Debug.Log("Victory!");
-            onBattleOver(true);
             StopAllCharacters();
+            OnBattleOver(true);
             
 
             
@@ -92,7 +93,8 @@ public class BattleManager : MonoBehaviour
         {
             Debug.Log("Womp Womp");
             StopAllCharacters();
-            onBattleOver(true);
+            OnBattleOver(false);
+            
             
             
         }
