@@ -13,11 +13,11 @@ GameObject:
   - component: {fileID: 1338621249214013030}
   m_Layer: 0
   m_Name: Wasp
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &5533026469660752933
 RectTransform:
   m_ObjectHideFlags: 0
@@ -51,7 +51,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entityData:
-    characterName: Enemy
+    characterName: Wasp
     basicAttack:
       abilityName: Sting
       abValue: 5

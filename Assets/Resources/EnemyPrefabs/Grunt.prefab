@@ -13,11 +13,11 @@ GameObject:
   - component: {fileID: 4294866271646202127}
   m_Layer: 0
   m_Name: Grunt
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5533026469660752933
 Transform:
   m_ObjectHideFlags: 0
@@ -225,7 +225,6 @@ MonoBehaviour:
         m_Calls: []
     _charCont: {fileID: 0}
   targetData: {fileID: 0}
-  sprite: {fileID: 0}
 --- !u!212 &4294866271646202127
 SpriteRenderer:
   m_ObjectHideFlags: 0
