@@ -6,7 +6,7 @@ public class Lose : MonoBehaviour
 {
     public GameObject LoseMenuUI;
 
-    public Health Health;
+     Health Health;
     void Start()
     {
         
@@ -17,14 +17,14 @@ public class Lose : MonoBehaviour
     {
         if (Health.health <0.1f)
         {
-            Lose()
+            LoseScreen();
         }
     }
 
-    public void Lose()
+    public void LoseScreen()
     {
         LoseMenuUI.SetActive(true);
-        Time.timeScale = 0f
+        Time.timeScale = 0f;
 
     }
 }
