@@ -9,6 +9,8 @@ public class Player_Controller : MonoBehaviour
     float SprintWhyNot = 1f;
     public float collisionRadius;
 
+    public Animator animator;
+
     bool isMoving;
     Vector2 input;
 
@@ -60,6 +62,7 @@ public class Player_Controller : MonoBehaviour
         }
         IEnumerator Move(Vector3 targetpos)
         {
+            animator.SetBool("IsMoving", true);
             isMoving = true;
             while ((targetpos - transform.position).sqrMagnitude > Mathf.Epsilon)
             {
@@ -67,6 +70,7 @@ public class Player_Controller : MonoBehaviour
                 yield return null;
             }
             transform.position = targetpos;
+            animator.SetBool("IsMoving", false);
             isMoving = false;
         }
         bool IsAWall(Vector2 targetpos)
